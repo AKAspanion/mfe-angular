@@ -8,7 +8,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:shell": "ng serve shell --live-reload false",
+    "start:shell": "ng serve shell --live-reload true",
     "start:remote-vue": "npm --prefix ./remote-vue run start",
     "start:remote-react": "npm --prefix ./remote-react run start",
     "format": "yarn prettier --write ."

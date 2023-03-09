@@ -1,0 +1,1 @@
+const reactAppRouteScope = 'remote-react';

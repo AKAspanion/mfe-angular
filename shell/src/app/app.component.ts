@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MicrofrontendService } from './microfrontends/microfrontend.service';
+import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 
 @Component({
   selector: 'app-root',
