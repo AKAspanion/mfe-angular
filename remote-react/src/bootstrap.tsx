@@ -5,17 +5,18 @@ import App from './App';
 import { HistoryStrategy } from '../@types/shared-route';
 import { ReactStore } from '../@types/shared-store';
 
-const mount = ({
-  mountPoint,
-  store,
-  initialPathname,
-  historyStrategy,
-}: {
-  mountPoint: HTMLElement;
-  store?: ReactStore;
-  initialPathname?: string;
-  historyStrategy?: HistoryStrategy;
-}) => {
+const mount = (
+  mountPoint: HTMLElement,
+  {
+    store,
+    initialPathname,
+    historyStrategy,
+  }: {
+    store?: ReactStore;
+    initialPathname?: string;
+    historyStrategy?: HistoryStrategy;
+  } = {}
+) => {
   const history =
     historyStrategy ||
     createMemoryHistory({
@@ -26,4 +27,4 @@ const mount = ({
   root.render(<App history={history} store={store} />);
 };
 
-export { mount };
+export default { mount };

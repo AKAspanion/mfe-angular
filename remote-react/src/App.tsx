@@ -64,7 +64,7 @@ const AppWithRoute: React.FC<AppProps> = props => {
 
   return (
     <AppWithStore {...props}>
-      <div style={{ border: '1px solid red', padding: 16, margin: 16 }}>
+      <div style={{ border: '1px solid blue', padding: 16 }}>
         <h3 style={{ marginBottom: '10px' }}>RemoteApp's router</h3>
         <HistoryRouter history={history}>
           <Routes>
@@ -116,8 +116,8 @@ const App: React.FC = () => {
   const [remoteAppInput, setRemoteAppInput] = useState('');
 
   return (
-    <div style={{ border: '1px solid red', padding: 16, margin: 16 }}>
-      <h1>Hello from Apptication 1</h1>
+    <div style={{ border: '1px solid blue', padding: 16 }}>
+      <h1>Hello from React Application</h1>
       <div style={{ marginBottom: '10px' }}>
         RemoteApp's name from the redux store :{' '}
         <strong>{state && state?.appName}</strong>
