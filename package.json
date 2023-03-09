@@ -2,14 +2,15 @@
   "name": "angular15-vue3",
   "private": true,
   "workspaces": [
-    "vue-remote"
+    "remote-vue",
+    "remote-react"
   ],
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start:shell": "ng serve shell --live-reload false",
-    "build:shell": "ng build shell",
-    "start:vue-remote": "npm --prefix ./vue-remote run serve"
+    "start:remote-vue": "npm --prefix ./remote-vue run start",
+    "start:remote-react": "npm --prefix ./remote-react run start"
   },
   "dependencies": {
     "@angular/animations": "15.0.4",
