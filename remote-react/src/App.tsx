@@ -24,6 +24,7 @@ import { changeAppNameAction, reducers } from './reducer';
 const remoteAppScope = 'app1';
 
 export declare type AppProps = {
+  basename?: string;
   history: HistoryStrategy;
   store?: ReactStore;
   children?: React.ReactNode;
@@ -34,7 +35,7 @@ const AppDefault: React.FC<AppProps> = props => {
 };
 
 const AppWithRoute: React.FC<AppProps> = props => {
-  const { history } = props;
+  const { history, basename = '' } = props;
 
   useEffect(() => {
     const unlistenHistoryChanges = history.listen(
@@ -47,8 +48,6 @@ const AppWithRoute: React.FC<AppProps> = props => {
 
     const shellNavigationHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
-      const { pathname: currentPathname } = history.location;
-      console.log('[shell] navigated', pathname, currentPathname);
       history.push(pathname);
     };
 
@@ -64,7 +63,7 @@ const AppWithRoute: React.FC<AppProps> = props => {
     <AppWithStore {...props}>
       <div style={{ border: '1px solid blue', padding: 16 }}>
         <h3 style={{ marginBottom: '10px' }}>RemoteApp's router</h3>
-        <HistoryRouter history={history}>
+        <HistoryRouter basename={basename} history={history}>
           <Routes>
             <Route index element={<Page1 />} />
             <Route path="page-1" element={<Page1 />} />

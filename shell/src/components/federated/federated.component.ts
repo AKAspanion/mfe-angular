@@ -12,8 +12,6 @@ import {
 import { reactAppRouteScope } from 'shell/src/constants/microfrontends';
 import { loadRemoteModule } from '../../utils/federation-utils';
 
-const reactAppBasename = `/${reactAppRouteScope}`;
-
 @Component({
   selector: 'federated-component',
   templateUrl: './federated.component.html',
@@ -25,6 +23,7 @@ export class FederatedComponent implements OnInit {
   @Input() exposedModule: string;
   @Input() componentName = 'default';
   @Input() isApp: boolean;
+  @Input() basePathName: string;
   @Input() webComponentSelector: string;
   @Output() onRemoteMount: EventEmitter<string> = new EventEmitter<string>();
   private viewContainerRef = inject(ViewContainerRef);
@@ -56,9 +55,7 @@ export class FederatedComponent implements OnInit {
       const entity = federated[this.componentName];
 
       if (this.isApp) {
-        entity.mount(domElemet, {
-          initialPathname: this._location.path().replace(reactAppBasename, ''),
-        });
+        entity.mount(domElemet, { basename: this.basePathName });
       } else {
         const selector = this.webComponentSelector;
         if (!customElements.get(selector)) {

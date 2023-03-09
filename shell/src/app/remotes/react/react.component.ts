@@ -9,15 +9,11 @@ import { reactAppRouteScope } from 'shell/src/constants/microfrontends';
 })
 export class ReactRemote implements OnDestroy {
   constructor(private _location: Location) {}
+  public reactAppBasename: string = `/${reactAppRouteScope}`;
 
   private navigationHandler = (event: any) => {
-    const newPathname = `${reactAppRouteScope}${event.detail}`;
-    console.log(
-      '[remote-react] navigated',
-      event.detail,
-      this._location.path(),
-      newPathname
-    );
+    const newPathname = event.detail;
+
     if (newPathname === this._location.path()) {
       return;
     }

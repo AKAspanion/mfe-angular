@@ -1,18 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-  RouterEvent,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { reactAppRouteScope } from '../constants/microfrontends';
 import { MicrofrontendService } from '../microfrontends/microfrontend.service';
-import { RouteEventsService } from './route-events.service';
-
-const reactAppBasename = `/${reactAppRouteScope}`;
 
 @Component({
   selector: 'app-root',
@@ -22,6 +12,8 @@ const reactAppBasename = `/${reactAppRouteScope}`;
 export class AppComponent implements OnInit, OnDestroy {
   title = 'shell';
   private initLocation: string;
+  private reactAppBasename: string = `/${reactAppRouteScope}`;
+
   constructor(
     public mfService: MicrofrontendService,
     private _location: Location,
@@ -29,7 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     _router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
-        console.log(event);
         this.handleNavigation(event.url);
       }
     });
@@ -38,25 +29,29 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!url) {
       return;
     }
-    if (url.startsWith(reactAppBasename)) {
-      const parsedUrl = url.replace(reactAppBasename, '');
-      if (url === this._location.path()) {
-        return;
+    if (url.startsWith(this.reactAppBasename)) {
+      if (url !== this._location.path()) {
+        window.dispatchEvent(
+          new CustomEvent('[shell] navigated', { detail: url })
+        );
+      } else if (url === this.reactAppBasename) {
+        window.dispatchEvent(
+          new CustomEvent('[shell] navigated', {
+            detail: this.reactAppBasename,
+          })
+        );
       }
-
-      window.dispatchEvent(
-        new CustomEvent('[shell] navigated', { detail: parsedUrl })
-      );
     }
   };
   private routeSync = () => {
-    console.log('[remote-react] mounted', this.initLocation);
-    if (this.initLocation) {
-      this.handleNavigation(this.initLocation);
-    }
+    // TODO find out an event for this
+    setTimeout(() => {
+      if (this.initLocation) {
+        this.handleNavigation(this.initLocation);
+      }
+    }, 100);
   };
   ngOnInit(): void {
-    console.log(this._router);
     if (!this.initLocation) {
       this.initLocation = this._location.path();
     }

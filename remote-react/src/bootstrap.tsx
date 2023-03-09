@@ -9,9 +9,11 @@ const mount = (
   mountPoint: HTMLElement,
   {
     store,
+    basename,
     initialPathname,
     historyStrategy,
   }: {
+    basename?: string;
     store?: ReactStore;
     initialPathname?: string;
     historyStrategy?: HistoryStrategy;
@@ -24,7 +26,7 @@ const mount = (
     });
 
   const root = createRoot(mountPoint);
-  root.render(<App history={history} store={store} />);
+  root.render(<App history={history} store={store} basename={basename} />);
 };
 
 export default { mount };
