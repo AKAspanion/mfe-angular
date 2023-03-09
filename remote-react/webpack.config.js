@@ -11,9 +11,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    static: [path.join(__dirname, 'public'), path.join(__dirname, 'dist')],
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
