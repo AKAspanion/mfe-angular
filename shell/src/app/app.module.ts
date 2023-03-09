@@ -1,11 +1,16 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ShellModule } from './shell/shell.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { MicrofrontendService } from './microfrontends/microfrontend.service';
-import { NgxsModule } from '@ngxs/store';
+import { HomeComponent } from '../pages/home/home.component';
+import { PageOne } from '../pages/home/page-one/page-one.component';
+import { PageTwo } from '../pages/home/page-two/page-two.component';
+import { FederatedComponent } from '../components/federated/federated.component';
+// import { NgxsModule } from '@ngxs/store';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -14,8 +19,20 @@ export function initializeApp(
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PageOne,
+    PageTwo,
+    FederatedComponent,
+  ],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(APP_ROUTES),
+  ],
   providers: [
     MicrofrontendService,
     {

@@ -6,7 +6,7 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { loadRemoteModule } from '../../../utils/federation-utils';
+import { loadRemoteModule } from '../../app/utils/federation-utils';
 
 @Component({
   selector: 'federated-component',
