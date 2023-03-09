@@ -3,5 +3,6 @@
     remoteEntry="http://localhost:4202/remoteEntry.js"
     remoteName="react_remote"
     exposedModule="./Bootstrap"
-    [isApp]="true"></federated-component>
+    [isApp]="true"
+    (onRemoteMount)="onMount($event)"></federated-component>
 </div>

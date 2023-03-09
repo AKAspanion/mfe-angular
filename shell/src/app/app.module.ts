@@ -12,6 +12,7 @@ import { PageTwo } from './pages/page-two/page-two.component';
 import { FederatedComponent } from '../components/federated/federated.component';
 import { ReactRemote } from './remotes/react/react.component';
 import { VueRemote } from './remotes/vue/vue.component';
+import { RouteEventsService } from './route-events.service';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -37,6 +38,7 @@ export function initializeApp(
     RouterModule.forRoot(APP_ROUTES),
   ],
   providers: [
+    RouteEventsService,
     MicrofrontendService,
     {
       provide: APP_INITIALIZER,

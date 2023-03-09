@@ -1,12 +1,18 @@
+import { Location } from '@angular/common';
 import {
   Component,
   Input,
   OnInit,
   inject,
   Renderer2,
+  EventEmitter,
   ViewContainerRef,
+  Output,
 } from '@angular/core';
+import { reactAppRouteScope } from 'shell/src/constants/microfrontends';
 import { loadRemoteModule } from '../../utils/federation-utils';
+
+const reactAppBasename = `/${reactAppRouteScope}`;
 
 @Component({
   selector: 'federated-component',
@@ -20,37 +26,39 @@ export class FederatedComponent implements OnInit {
   @Input() componentName = 'default';
   @Input() isApp: boolean;
   @Input() webComponentSelector: string;
+  @Output() onRemoteMount: EventEmitter<string> = new EventEmitter<string>();
   private viewContainerRef = inject(ViewContainerRef);
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private _location: Location) {}
 
   createRemoteContainer(id: string) {
-    // Use Angular's Renderer2 to create the div element
-    const recaptchaContainer = this.renderer.createElement('div');
-    // Set the id of the div
-    this.renderer.setProperty(recaptchaContainer, 'id', id);
-    // Append the created div to the body element
+    const remoteContainer = this.renderer.createElement('div');
+    this.renderer.setProperty(remoteContainer, 'id', id);
     this.renderer.appendChild(
       this.viewContainerRef.element.nativeElement,
-      recaptchaContainer
+      remoteContainer
     );
 
-    return recaptchaContainer;
+    return remoteContainer;
   }
 
   ngOnInit(): void {
+    const domElemet = this.createRemoteContainer(
+      this.remoteName + this.exposedModule
+    );
+    domElemet.innerHTML = 'Loading...';
     loadRemoteModule({
       remoteEntry: this.remoteEntry,
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
     }).then(federated => {
+      domElemet.innerHTML = '';
       const entity = federated[this.componentName];
-      const domElemet = this.createRemoteContainer(
-        this.remoteName + this.exposedModule
-      );
 
       if (this.isApp) {
-        entity.mount(domElemet);
+        entity.mount(domElemet, {
+          initialPathname: this._location.path().replace(reactAppBasename, ''),
+        });
       } else {
         const selector = this.webComponentSelector;
         if (!customElements.get(selector)) {
@@ -60,6 +68,8 @@ export class FederatedComponent implements OnInit {
 
         this.viewContainerRef.element.nativeElement.appendChild(element);
       }
+
+      this.onRemoteMount.emit(this.remoteName);
     });
   }
 }

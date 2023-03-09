@@ -7,12 +7,13 @@ const routes: Routes = [
   { path: '', component: ReactRemote },
   {
     path: '**',
+    pathMatch: 'prefix',
     redirectTo: `/${reactAppRouteScope}`,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: 'disabled' })],
   exports: [RouterModule],
 })
 export class ReactRoutingModule {}

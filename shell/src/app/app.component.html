@@ -1,8 +1,41 @@
 <nav>
-  <ul class="nav-list">
-    <li class="nav-item"><a routerLink="home">Home</a></li>
-    <li class="nav-item"><a routerLink="remote-react">React</a></li>
-    <li class="nav-item"><a routerLink="remote-vue">Vue</a></li>
-  </ul>
+  <div class="nav-list">
+    <div class="nav-item-parent">
+      <li class="nav-item"><a routerLink="home">Home</a></li>
+      <ul class="nav-list-ul">
+        <li class="nav-item nav-item-small">
+          <a routerLink="home/page-1">Home page 1</a>
+        </li>
+        <li class="nav-item nav-item-small">
+          <a routerLink="home/page-2">Home page 2</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-item-parent">
+      <li class="nav-item"><a routerLink="remote-react">React</a></li>
+      <ul class="nav-list-ul">
+        <li class="nav-item nav-item-small">
+          <a routerLink="remote-react/page-1">React page 1</a>
+        </li>
+        <li class="nav-item nav-item-small">
+          <a routerLink="remote-react/page-2">React page 2</a>
+        </li>
+        <li class="nav-item nav-item-small">
+          <a routerLink="remote-react/page-2--sd/asdasd/asd">React page not</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-item-parent">
+      <li class="nav-item"><a routerLink="remote-vue">Vue</a></li>
+      <ul class="nav-list-ul">
+        <li class="nav-item nav-item-small">
+          <a routerLink="remote-vue/page-1">Vue page 1</a>
+        </li>
+        <li class="nav-item nav-item-small">
+          <a routerLink="remote-vue/page-2">Vue page 2</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 <router-outlet></router-outlet>

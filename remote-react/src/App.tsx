@@ -48,9 +48,7 @@ const AppWithRoute: React.FC<AppProps> = props => {
     const shellNavigationHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
       const { pathname: currentPathname } = history.location;
-      if (currentPathname === pathname) {
-        return;
-      }
+      console.log('[shell] navigated', pathname, currentPathname);
       history.push(pathname);
     };
 
@@ -71,6 +69,8 @@ const AppWithRoute: React.FC<AppProps> = props => {
             <Route index element={<Page1 />} />
             <Route path="page-1" element={<Page1 />} />
             <Route path="page-2" element={<Page2 />} />
+
+            <Route path="*" element={<div>Route not found</div>} />
           </Routes>
         </HistoryRouter>
       </div>
