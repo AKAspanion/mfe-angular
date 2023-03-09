@@ -7,16 +7,15 @@ import { APP_ROUTES } from './app.routes';
 import { MicrofrontendService } from './microfrontends/microfrontend.service';
 import { NgxsModule } from '@ngxs/store';
 
-export function initializeApp(mfService: MicrofrontendService): () => Promise<void> {
+export function initializeApp(
+  mfService: MicrofrontendService
+): () => Promise<void> {
   return () => mfService.initialise();
 }
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(APP_ROUTES),
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
   providers: [
     MicrofrontendService,
     {

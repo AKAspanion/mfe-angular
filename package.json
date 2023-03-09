@@ -10,7 +10,8 @@
     "ng": "ng",
     "start:shell": "ng serve shell --live-reload false",
     "start:remote-vue": "npm --prefix ./remote-vue run start",
-    "start:remote-react": "npm --prefix ./remote-react run start"
+    "start:remote-react": "npm --prefix ./remote-react run start",
+    "format": "yarn prettier --write ."
   },
   "dependencies": {
     "@angular/animations": "15.0.4",
@@ -46,6 +47,7 @@
     "karma-jasmine-html-reporter": "1.7.0",
     "ng-packagr": "15.0.3",
     "ngx-build-plus": "15.0.0",
+    "prettier": "^2.8.4",
     "protractor": "7.0.0",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",

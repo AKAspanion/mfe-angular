@@ -7,6 +7,11 @@ import { FederatedComponent } from './components/federated/federated.component';
 
 @NgModule({
   declarations: [HomeComponent, FederatedComponent],
-  imports: [CommonModule, ProfileRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ShellModule {}
