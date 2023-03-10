@@ -3,12 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+* {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #eef1f6;
-}
-
-.test {
-  color: deeppink;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }

@@ -1,10 +1,26 @@
-<div class="container-app">
-  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-    <h1>Login</h1>
-    <div class="login-inputs">
-      <input placeholder="Please enter a valid token" [(ngModel)]="token" />
-      <button class="btn">Login</button>
+<div class="p-8">
+  <h2>Microfrontend Shell</h2>
+  <p class="text-2xl font-bold">Welcome to Login Page</p>
+  <br />
+  <div class="w-full flex items-center justify-center">
+    <div class="card w-96 bg-base-200 shadow-xl m-4">
+      <div class="card-body text-center">
+        <h2 class="card-title">Login</h2>
+        <form class="mt-2" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+          <input
+            [(ngModel)]="token"
+            type="text"
+            placeholder="Please enter a valid token"
+            class="input input-bordered w-full max-w-xs" />
+          <div class="card-actions justify-center mt-4">
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </form>
+        <p class="text-m mt-4">Example Token</p>
+        <p class="text-xs">
+          2023-03-10T10:21:28.989Z##2023-03-20T00:00:00.000Z!!admin,user
+        </p>
+      </div>
     </div>
-    <code>Token format is `ISODATE##ISODATE!!ROLES`</code>
-  </form>
+  </div>
 </div>
