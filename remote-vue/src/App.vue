@@ -1,10 +1,13 @@
 <template>
-  <h1>Hello from Vue Application</h1>
-  <nav class="vue-nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/page-1">Page 1</router-link> |
-    <router-link to="/page-2">Page 2</router-link>
-  </nav>
+  <div class="p-4">
+    <h1 class="text-2xl font-bold">Hello from Vue Application</h1>
+    <nav class="vue-nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/page-1">Page 1</router-link> |
+      <router-link to="/page-2">Page 2</router-link>
+    </nav>
+    <br />
+  </div>
   <router-view />
 </template>
 <script >
