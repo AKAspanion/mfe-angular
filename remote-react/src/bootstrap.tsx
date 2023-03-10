@@ -1,32 +1,26 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createMemoryHistory } from 'history';
 import App from './App';
-import { HistoryStrategy } from '../@types/shared-route';
 import { ReactStore } from '../@types/shared-store';
+import { createMemoryRouter } from 'react-router-dom';
+import routes from './routes/routes';
 
 const mount = (
   mountPoint: HTMLElement,
   {
     store,
+    history,
     basename = '/',
-    initialPathname,
-    historyStrategy,
   }: {
     basename?: string;
     store?: ReactStore;
-    initialPathname?: string;
-    historyStrategy?: HistoryStrategy;
+    history?: ReturnType<typeof createMemoryRouter>;
   } = {}
 ) => {
-  const history =
-    historyStrategy ||
-    createMemoryHistory({
-      initialEntries: [initialPathname || basename],
-    });
+  const router = history || createMemoryRouter(routes, { basename });
 
   const root = createRoot(mountPoint);
-  root.render(<App history={history} store={store} basename={basename} />);
+  root.render(<App history={router} store={store} basename={basename} />);
 };
 
 export default { mount };

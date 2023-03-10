@@ -1,11 +1,7 @@
 // App.tsx
 import React, { useCallback, useEffect, useState } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
-import {
-  Route,
-  Routes,
-  unstable_HistoryRouter as HistoryRouter,
-} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
   applyMiddleware,
@@ -15,18 +11,15 @@ import {
   StoreEnhancer,
 } from 'redux';
 import thunk from 'redux-thunk';
-import { HistoryStrategy } from '../@types/shared-route';
 import { ReactStore, StoreShape } from '../@types/shared-store';
-import { Page1 } from './pages/Page1';
-import { Page2 } from './pages/Page2';
 import { changeAppNameAction, reducers } from './reducer';
 
 const remoteAppScope = 'app1';
 
 export declare type AppProps = {
   basename?: string;
-  history: HistoryStrategy;
   store?: ReactStore;
+  history: ReturnType<typeof createBrowserRouter>;
   children?: React.ReactNode;
 };
 
@@ -35,46 +28,35 @@ const AppDefault: React.FC<AppProps> = props => {
 };
 
 const AppWithRoute: React.FC<AppProps> = props => {
-  const { history, basename = '' } = props;
+  const { history } = props;
 
   useEffect(() => {
-    const unlistenHistoryChanges = history.listen(
-      ({ location: { pathname } }) => {
-        window.dispatchEvent(
-          new CustomEvent('[remote-react] navigated', { detail: pathname })
-        );
-      }
-    );
+    history.subscribe(({ location: { pathname } }) => {
+      window.dispatchEvent(
+        new CustomEvent('[remote-react] navigated', { detail: pathname })
+      );
+    });
 
     const shellNavigationHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
-      history.push(pathname);
+      history.navigate(pathname);
     };
 
     window.addEventListener('[shell-react] navigated', shellNavigationHandler);
+    window.dispatchEvent(new CustomEvent('[remote-react] mounted'));
 
     return () => {
       window.removeEventListener(
         '[shell-react] navigated',
         shellNavigationHandler
       );
-      unlistenHistoryChanges();
     };
-  }, [history]);
+  }, []);
 
   return (
     <AppWithStore {...props}>
       <div style={{ padding: 16 }}>
-        <h3 style={{ marginBottom: '10px' }}>RemoteApp's router</h3>
-        <HistoryRouter basename={basename} history={history}>
-          <Routes>
-            <Route index element={<Page1 />} />
-            <Route path="page-1" element={<Page1 />} />
-            <Route path="page-2" element={<Page2 />} />
-
-            <Route path="*" element={<div>Route not found</div>} />
-          </Routes>
-        </HistoryRouter>
+        <RouterProvider router={history} />
       </div>
     </AppWithStore>
   );

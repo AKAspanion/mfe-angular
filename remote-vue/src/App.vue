@@ -25,6 +25,8 @@ export default defineComponent({
         );
       }
     }, false);
+
+    window.dispatchEvent(new CustomEvent('[remote-vue] mounted'));
   },
   setup() {
     const route = useRoute()

@@ -25,7 +25,6 @@ export class ReactRemote implements OnDestroy {
       this.navigationHandler,
       false
     );
-    window.dispatchEvent(new CustomEvent('[remote-react] mounted'));
   }
   ngOnDestroy(): void {
     window.removeEventListener(

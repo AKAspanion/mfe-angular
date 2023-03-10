@@ -54,7 +54,10 @@ export class FederatedComponent implements OnInit {
       const entity = federated[this.componentName];
 
       if (this.isApp) {
-        entity.mount(domElemet, { basename: this.basePathName });
+        entity.mount(domElemet, {
+          history: false,
+          basename: this.basePathName,
+        });
       } else {
         const selector = this.webComponentSelector;
         if (!customElements.get(selector)) {

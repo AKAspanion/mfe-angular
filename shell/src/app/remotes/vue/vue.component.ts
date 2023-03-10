@@ -24,7 +24,6 @@ export class VueRemote implements OnDestroy {
       this.navigationHandler,
       false
     );
-    window.dispatchEvent(new CustomEvent('[remote-vue] mounted'));
   }
   ngOnDestroy(): void {
     window.removeEventListener(

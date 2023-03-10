@@ -70,7 +70,6 @@ export class AppComponent implements OnInit {
       }
     }
   };
-
   private routeSync = () => {
     if (startUrl) {
       this.handleNavigation(startUrl);
