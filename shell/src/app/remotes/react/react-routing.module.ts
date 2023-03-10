@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { initialNavigation: 'disabled' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class ReactRoutingModule {}

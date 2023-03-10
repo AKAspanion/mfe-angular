@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 import { HomeComponent } from './pages/home.component';
+import { LoginComponent } from './pages/login/login.component';
 import { PageOne } from './pages/page-one/page-one.component';
 import { PageTwo } from './pages/page-two/page-two.component';
 import { FederatedComponent } from '../components/federated/federated.component';
 import { ReactRemote } from './remotes/react/react.component';
 import { VueRemote } from './remotes/vue/vue.component';
 import { RouteEventsService } from './route-events.service';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { RoleGuardService } from './auth/role-guard.service';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -28,6 +31,7 @@ export function initializeApp(
     PageTwo,
     ReactRemote,
     VueRemote,
+    LoginComponent,
     FederatedComponent,
   ],
   imports: [
@@ -38,6 +42,8 @@ export function initializeApp(
     RouterModule.forRoot(APP_ROUTES),
   ],
   providers: [
+    AuthGuardService,
+    RoleGuardService,
     RouteEventsService,
     MicrofrontendService,
     {
