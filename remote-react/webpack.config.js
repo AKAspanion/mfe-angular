@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const path = require('path');
 const deps = require('./package.json').dependencies;
@@ -28,7 +29,7 @@ module.exports = {
       },
       {
         test: /\.(ts|tsx|js)$/,
-        loader: 'ts-loader',
+        loader: 'esbuild-loader',
         exclude: [/node_modules/],
       },
     ],
@@ -37,7 +38,6 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'react_remote',
       filename: 'remoteEntry.js',
-      remotes: {},
       exposes: {
         './App': './src/App',
         './Bootstrap': './src/bootstrap',
@@ -48,6 +48,7 @@ module.exports = {
         'react-dom': { singleton: true, requiredVersion: deps['react-dom'] },
       },
     }),
+    new ForkTsCheckerWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: './public/index.html',
     }),

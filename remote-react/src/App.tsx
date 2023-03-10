@@ -14,6 +14,8 @@ import thunk from 'redux-thunk';
 import { ReactStore, StoreShape } from '../@types/shared-store';
 import { changeAppNameAction, reducers } from './reducer';
 
+import './App.css';
+
 const remoteAppScope = 'app1';
 
 export declare type AppProps = {
