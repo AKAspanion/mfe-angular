@@ -1,14 +1,28 @@
 <template>
   <div class="p-4">
-    <h1 class="text-2xl font-bold">Hello from Vue Application</h1>
-    <nav class="vue-nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/page-1">Page 1</router-link> |
-      <router-link to="/page-2">Page 2</router-link>
-    </nav>
-    <br />
+    <div class="bg-base-200 p-4 rounded-xl shadow-xl">
+      <h1 class="text-2xl font-bold">Hello from Vue Application</h1>
+      <div class="p-4">
+        <div class="navbar bg-base-200">
+          <div class="navbar-start"></div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+              <li>
+                <router-link to="/page-1">Products</router-link>
+              </li>
+              <li>
+                <router-link to="/page-2">Categories</router-link>
+              </li>
+            </ul>
+          </div>
+          <div class="navbar-end"></div>
+        </div>
+      </div>
+      <div class="bg-base-100 p-4 rounded-xl">
+        <router-view />
+      </div>
+    </div>
   </div>
-  <router-view />
 </template>
 <script >
 import { defineComponent, watch } from "vue"
@@ -54,23 +68,5 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
-
-h1 {
-  margin: 1rem;
-  margin-bottom: 0px;
-}
-
-nav.vue-nav {
-  padding: 1rem;
-}
-
-nav.vue-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav.vue-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
