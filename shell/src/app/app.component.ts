@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { reactAppRouteScope } from '../constants/microfrontends';
+import { reactAppRouteBasePath } from '../constants/microfrontends';
 import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'shell';
   private initLocation: string;
-  private reactAppBasename: string = `/${reactAppRouteScope}`;
+  private reactAppBasename: string = reactAppRouteBasePath;
 
   constructor(
     public mfService: MicrofrontendService,

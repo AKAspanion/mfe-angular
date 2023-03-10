@@ -9,7 +9,6 @@ import {
   ViewContainerRef,
   Output,
 } from '@angular/core';
-import { reactAppRouteScope } from 'shell/src/constants/microfrontends';
 import { loadRemoteModule } from '../../utils/federation-utils';
 
 @Component({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { reactAppRouteScope } from 'shell/src/constants/microfrontends';
+import { reactAppRouteBasePath } from 'shell/src/constants/microfrontends';
 import { ReactRemote } from './react.component';
 
 const routes: Routes = [
@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'prefix',
-    redirectTo: `/${reactAppRouteScope}`,
+    redirectTo: reactAppRouteBasePath,
   },
 ];
 
