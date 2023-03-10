@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-export function Home() {
+function Home() {
   return (
     <React.Fragment>
       <h1>Hello from React Application</h1>
@@ -11,3 +11,5 @@ export function Home() {
     </React.Fragment>
   );
 }
+
+export default Home;

@@ -1,13 +1,13 @@
 import { createMemoryHistory, createRouter } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
 import NotFound from '../views/NotFound.vue';
-import HelloWorld from '../components/HelloWorld.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/HomeView.vue');
+    },
   },
   {
     path: '/page-1',
@@ -16,7 +16,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Page1View.vue');
+      return import(/* webpackChunkName: "page-1" */ '../views/Page1View.vue');
     },
   },
   {
@@ -26,7 +26,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Page2View.vue');
+      return import(/* webpackChunkName: "page-2" */ '../views/Page2View.vue');
     },
   },
   { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },

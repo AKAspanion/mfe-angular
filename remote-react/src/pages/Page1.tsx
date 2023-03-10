@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export function Page1() {
+function Page1() {
   return (
     <React.Fragment>
       <div>Page 1 from React App</div>
@@ -9,3 +9,5 @@ export function Page1() {
     </React.Fragment>
   );
 }
+
+export default Page1;
