@@ -19,13 +19,11 @@
 </style>
 <style scoped>
 .hello {
-  color: blue;
-  border: 1px solid green;
   padding: 20px;
 }
 
 .test-scoped {
-  color: red;
+  opacity: 0.8;
 }
 </style>
 <script>
@@ -41,7 +39,7 @@ export default {
   },
   methods: {
     click() {
-      this.msg = 'Interaction Works';
+      this.msg = 'Click Works';
     },
   },
 };

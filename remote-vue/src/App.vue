@@ -1,7 +1,6 @@
 <template>
   <nav class="vue-nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/hello">hello</router-link> |
     <router-link to="/page-1">Page 1</router-link> |
     <router-link to="/page-2">Page 2</router-link>
   </nav>
@@ -11,25 +10,28 @@
 import { defineComponent, watch } from "vue"
 import { useRoute } from "vue-router"
 
+let nextPath = "";
+
 export default defineComponent({
   mounted() {
     window.addEventListener('[shell-vue] navigated', (d) => {
-      this.$router.push({ path: d.detail });
+      const path = d.detail;
+      if (nextPath !== path) {
+        this.$router.push({ path });
+      } else {
+        window.dispatchEvent(
+          new CustomEvent('[remote-vue] navigated', { detail: `/remote-vue${path}` })
+        );
+      }
     }, false);
-  },
-  unmounted() {
-    window.removeEventListener('[shell-vue] navigated', this.shellNavigationHandler, false);
-  },
-
-  shellNavigationHandler: (event) => {
-    const pathname = event.detail;
   },
   setup() {
     const route = useRoute()
 
     watch(
       () => route.fullPath,
-      pathname => {
+      (pathname) => {
+        nextPath = pathname;
         window.dispatchEvent(
           new CustomEvent('[remote-vue] navigated', { detail: `/remote-vue${pathname}` })
         );

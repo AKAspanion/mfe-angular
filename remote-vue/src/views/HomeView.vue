@@ -16,3 +16,8 @@ export default {
   },
 };
 </script>
+<style>
+img {
+  padding: 0px 2rem;
+}
+</style>

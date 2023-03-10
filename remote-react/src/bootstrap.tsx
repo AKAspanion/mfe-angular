@@ -9,7 +9,7 @@ const mount = (
   mountPoint: HTMLElement,
   {
     store,
-    basename,
+    basename = '/',
     initialPathname,
     historyStrategy,
   }: {
@@ -22,7 +22,7 @@ const mount = (
   const history =
     historyStrategy ||
     createMemoryHistory({
-      initialEntries: [initialPathname || '/'],
+      initialEntries: [initialPathname || basename],
     });
 
   const root = createRoot(mountPoint);

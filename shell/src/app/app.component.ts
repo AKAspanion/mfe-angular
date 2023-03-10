@@ -12,7 +12,7 @@ import { MicrofrontendService } from '../microfrontends/microfrontend.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   title = 'shell';
   private initLocation: string;
   private reactAppBasename: string = reactAppRouteBasePath;
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
       } else if (url === this.reactAppBasename) {
         window.dispatchEvent(
           new CustomEvent('[shell-react] navigated', {
-            detail: this.reactAppBasename,
+            detail: this.reactAppBasename + '/',
           })
         );
       }
@@ -53,27 +53,13 @@ export class AppComponent implements OnInit, OnDestroy {
             detail: url.replace(this.vueAppBasename, ''),
           })
         );
+      } else if (url === this.vueAppBasename) {
+        window.dispatchEvent(
+          new CustomEvent('[shell-react] navigated', {
+            detail: '',
+          })
+        );
       }
     }
   };
-  private routeSync = () => {
-    // TODO find out an event for this
-    setTimeout(() => {
-      if (this.initLocation) {
-        this.handleNavigation(this.initLocation);
-      }
-    }, 100);
-  };
-  ngOnInit(): void {
-    if (!this.initLocation) {
-      this.initLocation = this._location.path();
-    }
-
-    window.addEventListener('[remote-react] mounted', this.routeSync, false);
-    window.addEventListener('[remote-vue] mounted', this.routeSync, false);
-  }
-  ngOnDestroy(): void {
-    window.removeEventListener('[remote-react] mounted', this.routeSync, false);
-    window.removeEventListener('[remote-vue] mounted', this.routeSync, false);
-  }
 }
