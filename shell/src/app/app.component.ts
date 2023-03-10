@@ -34,22 +34,26 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const handleRoute = (base: string, eventName: string, trim = false) => {
+    if (url.startsWith(this.reactAppBasename)) {
       if (url !== this._location.path()) {
         window.dispatchEvent(
-          new CustomEvent(eventName, { detail: url.replace(base, '') })
+          new CustomEvent('[shell-react] navigated', { detail: url })
         );
-      } else if (url === base) {
+      } else if (url === this.reactAppBasename) {
         window.dispatchEvent(
-          new CustomEvent(eventName, { detail: base.replace(base, '') })
+          new CustomEvent('[shell-react] navigated', {
+            detail: this.reactAppBasename,
+          })
         );
       }
-    };
-
-    if (url.startsWith(this.reactAppBasename)) {
-      handleRoute(this.reactAppBasename, '[shell-react] navigated');
     } else if (url.startsWith(this.vueAppBasename)) {
-      handleRoute(this.vueAppBasename, '[shell-vue] navigated', true);
+      if (url !== this._location.path()) {
+        window.dispatchEvent(
+          new CustomEvent('[shell-vue] navigated', {
+            detail: url.replace(this.vueAppBasename, ''),
+          })
+        );
+      }
     }
   };
   private routeSync = () => {

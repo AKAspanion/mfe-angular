@@ -1,5 +1,6 @@
 import { createMemoryHistory, createRouter } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import NotFound from '../views/NotFound.vue';
 import HelloWorld from '../components/HelloWorld.vue';
 
 const routes = [
@@ -46,12 +47,16 @@ const routes = [
       return import(/* webpackChunkName: "about" */ '../views/Page2View.vue');
     },
   },
+  { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ];
 
-const routing = (basename, routerStrategy) =>
-  createRouter({
-    history: routerStrategy || createMemoryHistory(basename),
+const routing = (basename, routerStrategy) => {
+  const history = routerStrategy || createMemoryHistory(basename);
+
+  return createRouter({
+    history,
     routes,
   });
+};
 
 export default routing;

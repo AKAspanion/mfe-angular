@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ReactRemote },
   {
     path: '**',
-    pathMatch: 'prefix',
     redirectTo: reactAppRouteBasePath,
   },
 ];

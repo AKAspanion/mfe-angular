@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: VueRemote },
   {
     path: '**',
-    pathMatch: 'prefix',
     redirectTo: vueAppRouteBasePath,
   },
 ];
