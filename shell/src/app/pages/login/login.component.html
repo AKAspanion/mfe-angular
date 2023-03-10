@@ -1,4 +1,10 @@
 <div class="container-app">
-  <h1>Login</h1>
-  <input />
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <h1>Login</h1>
+    <div class="login-inputs">
+      <input placeholder="Please enter a valid token" [(ngModel)]="token" />
+      <button>Login</button>
+    </div>
+    <code>Token format is `ISODATE##ISODATE!!ROLES`</code>
+  </form>
 </div>
