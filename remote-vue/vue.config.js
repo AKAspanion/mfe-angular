@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service');
 const webpack = require('webpack');
-const path = require('path');
+const deps = require('./package.json').dependencies;
 
 module.exports = defineConfig({
   pages: {
@@ -38,9 +38,8 @@ module.exports = defineConfig({
           './Bootstrap': './src/bootstrap',
         },
         shared: {
-          vue: {
-            singleton: true,
-          },
+          ...deps,
+          vue: { singleton: true, requiredVersion: deps.vue },
         },
       }),
     ],

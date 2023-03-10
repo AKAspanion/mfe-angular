@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { ReactStore } from '../@types/shared-store';
-import { createMemoryRouter } from 'react-router-dom';
+import { createBrowserRouter, createMemoryRouter } from 'react-router-dom';
 import routes from './routes/routes';
 
 const mount = (
@@ -14,10 +14,12 @@ const mount = (
   }: {
     basename?: string;
     store?: ReactStore;
-    history?: ReturnType<typeof createMemoryRouter>;
+    history?: boolean;
   } = {}
 ) => {
-  const router = history || createMemoryRouter(routes, { basename });
+  const router = history
+    ? createBrowserRouter(routes)
+    : createMemoryRouter(routes, { basename });
 
   const root = createRoot(mountPoint);
   root.render(<App history={router} store={store} basename={basename} />);
