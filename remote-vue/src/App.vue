@@ -10,6 +10,7 @@
 <script >
 import { defineComponent, watch } from "vue"
 import { useRoute } from "vue-router"
+import "./App.css"
 
 let nextPath = "";
 
