@@ -1,5 +1,8 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
+import bootstrap from './bootstrap';
+import { createWebHistory } from 'vue-router';
 
-createApp(App).use(router).mount('#app');
+const history = createWebHistory('/remote-vue');
+
+bootstrap.mount('#vue-remote-root', {
+  history,
+});

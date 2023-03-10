@@ -1,5 +1,6 @@
 const { defineConfig } = require('@vue/cli-service');
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = defineConfig({
   pages: {
@@ -34,8 +35,7 @@ module.exports = defineConfig({
         name: 'vue_remote',
         filename: 'remoteEntry.js',
         exposes: {
-          './customElement': './src/components/HelloWorld.web-component.js',
-          './app': './src/components/HelloWorld.bootstrap.js',
+          './Bootstrap': './src/bootstrap',
         },
         shared: {
           vue: {

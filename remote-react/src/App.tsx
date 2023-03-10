@@ -51,10 +51,13 @@ const AppWithRoute: React.FC<AppProps> = props => {
       history.push(pathname);
     };
 
-    window.addEventListener('[shell] navigated', shellNavigationHandler);
+    window.addEventListener('[shell-react] navigated', shellNavigationHandler);
 
     return () => {
-      window.removeEventListener('[shell] navigated', shellNavigationHandler);
+      window.removeEventListener(
+        '[shell-react] navigated',
+        shellNavigationHandler
+      );
       unlistenHistoryChanges();
     };
   }, [history]);

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { reactAppRouteBasePath } from 'shell/src/constants/microfrontends';
+import { vueAppRouteBasePath } from 'shell/src/constants/microfrontends';
 import { VueRemote } from './vue.component';
 
 const routes: Routes = [
@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'prefix',
-    redirectTo: reactAppRouteBasePath,
+    redirectTo: vueAppRouteBasePath,
   },
 ];
 

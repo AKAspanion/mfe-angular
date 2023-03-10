@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createMemoryHistory, createRouter } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import HelloWorld from '@/components/HelloWorld';
+import HelloWorld from '../components/HelloWorld.vue';
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue');
+      return import(/* webpackChunkName: "about" */ '../views/Page2View.vue');
     },
   },
   {
@@ -26,11 +26,32 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: HelloWorld,
   },
+  {
+    path: '/page-1',
+    name: 'page1',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/Page1View.vue');
+    },
+  },
+  {
+    path: '/page-2',
+    name: 'page2',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/Page2View.vue');
+    },
+  },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+const routing = (basename, routerStrategy) =>
+  createRouter({
+    history: routerStrategy || createMemoryHistory(basename),
+    routes,
+  });
 
-export default router;
+export default routing;

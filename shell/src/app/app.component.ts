@@ -1,7 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { reactAppRouteBasePath } from '../constants/microfrontends';
+import {
+  reactAppRouteBasePath,
+  vueAppRouteBasePath,
+} from '../constants/microfrontends';
 import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 
 @Component({
@@ -13,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'shell';
   private initLocation: string;
   private reactAppBasename: string = reactAppRouteBasePath;
+  private vueAppBasename: string = vueAppRouteBasePath;
 
   constructor(
     public mfService: MicrofrontendService,
@@ -29,18 +33,23 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!url) {
       return;
     }
-    if (url.startsWith(this.reactAppBasename)) {
+
+    const handleRoute = (base: string, eventName: string, trim = false) => {
       if (url !== this._location.path()) {
         window.dispatchEvent(
-          new CustomEvent('[shell] navigated', { detail: url })
+          new CustomEvent(eventName, { detail: url.replace(base, '') })
         );
-      } else if (url === this.reactAppBasename) {
+      } else if (url === base) {
         window.dispatchEvent(
-          new CustomEvent('[shell] navigated', {
-            detail: this.reactAppBasename,
-          })
+          new CustomEvent(eventName, { detail: base.replace(base, '') })
         );
       }
+    };
+
+    if (url.startsWith(this.reactAppBasename)) {
+      handleRoute(this.reactAppBasename, '[shell-react] navigated');
+    } else if (url.startsWith(this.vueAppBasename)) {
+      handleRoute(this.vueAppBasename, '[shell-vue] navigated', true);
     }
   };
   private routeSync = () => {
@@ -57,8 +66,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     window.addEventListener('[remote-react] mounted', this.routeSync, false);
+    window.addEventListener('[remote-vue] mounted', this.routeSync, false);
   }
   ngOnDestroy(): void {
     window.removeEventListener('[remote-react] mounted', this.routeSync, false);
+    window.removeEventListener('[remote-vue] mounted', this.routeSync, false);
   }
 }
