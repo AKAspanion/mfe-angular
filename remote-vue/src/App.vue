@@ -1,4 +1,5 @@
 <template>
+  <h1>Hello from Vue Application</h1>
   <nav class="vue-nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/page-1">Page 1</router-link> |
@@ -42,7 +43,7 @@ export default defineComponent({
 })
 </script> 
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -51,8 +52,13 @@ export default defineComponent({
   color: #2c3e50;
 }
 
+h1 {
+  margin: 1rem;
+  margin-bottom: 0px;
+}
+
 nav.vue-nav {
-  padding: 30px;
+  padding: 1rem;
 }
 
 nav.vue-nav a {
@@ -64,4 +70,3 @@ nav.vue-nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
-<script></script>

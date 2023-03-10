@@ -1,20 +1,25 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationStart,
+  Router,
+  RouterEvent,
+} from '@angular/router';
 import {
   reactAppRouteBasePath,
   vueAppRouteBasePath,
 } from '../constants/microfrontends';
 import { MicrofrontendService } from '../microfrontends/microfrontend.service';
 
+let startUrl = '';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'shell';
-  private initLocation: string;
   private reactAppBasename: string = reactAppRouteBasePath;
   private vueAppBasename: string = vueAppRouteBasePath;
 
@@ -24,6 +29,9 @@ export class AppComponent {
     private _router: Router
   ) {
     _router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof NavigationStart) {
+        startUrl = event.url;
+      }
       if (event instanceof NavigationEnd) {
         this.handleNavigation(event.url);
       }
@@ -62,4 +70,19 @@ export class AppComponent {
       }
     }
   };
+
+  private routeSync = () => {
+    if (startUrl) {
+      this.handleNavigation(startUrl);
+      startUrl = '';
+    }
+  };
+  ngOnInit(): void {
+    window.addEventListener('[remote-react] mounted', this.routeSync, false);
+    window.addEventListener('[remote-vue] mounted', this.routeSync, false);
+  }
+  ngOnDestroy(): void {
+    window.removeEventListener('[remote-react] mounted', this.routeSync, false);
+    window.removeEventListener('[remote-vue] mounted', this.routeSync, false);
+  }
 }
