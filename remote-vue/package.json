@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve --port 4201",
+    "start": "vue-cli-service serve --port 4201 --open",
     "build": "vue-cli-service build",
     "build:start": "npx serve -s -p 4201 dist",
     "clean": "rm -rf dist",

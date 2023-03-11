@@ -7,7 +7,8 @@
     "build:start": "npx serve -s -p 4202 dist",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
-    "postbuild": "cp public/_redirects dist"
+    "postbuild": "cp public/_redirects dist",
+    "openssl": "export NODE_OPTIONS=--openssl-legacy-provider"
   },
   "devDependencies": {
     "@types/react": "18.0.17",

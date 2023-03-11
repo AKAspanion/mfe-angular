@@ -1,12 +1,12 @@
 <template>
-  <div class="p-4">
-    <div class="bg-base-200 p-4 rounded-xl shadow-xl">
-      <h1 class="text-2xl font-bold">Hello from Vue Application</h1>
-      <div class="p-4">
-        <div class="navbar bg-base-200">
-          <div class="navbar-start"></div>
-          <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1">
+  <div class="vu-p-4">
+    <div class="vu-bg-base-200 vu-p-4 vu-rounded-xl vu-shadow-xl">
+      <h1 class="vu-text-2xl vu-font-bold">Hello from Vue Application</h1>
+      <div class="vu-p-4">
+        <div class="vu-navbar vu-bg-base-200">
+          <div class="vu-navbar-start"></div>
+          <div class="vu-navbar-center vu-lg:flex">
+            <ul class="vu-menu vu-menu-horizontal vu-px-1">
               <li>
                 <router-link to="/page-1">Products</router-link>
               </li>
@@ -15,10 +15,10 @@
               </li>
             </ul>
           </div>
-          <div class="navbar-end"></div>
+          <div class="vu-navbar-end"></div>
         </div>
       </div>
-      <div class="bg-base-100 p-4 rounded-xl">
+      <div class="vu-bg-base-100 vu-p-4 vu-rounded-xl">
         <router-view />
       </div>
     </div>

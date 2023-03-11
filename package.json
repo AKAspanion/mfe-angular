@@ -9,7 +9,7 @@
   "scripts": {
     "ng": "ng",
     "start:remotes": "lerna run --parallel start",
-    "start:shell": "ng serve shell --live-reload true",
+    "start:shell": "ng serve shell --live-reload true --open",
     "start:remote-vue": "npm --prefix ./remote-vue run start",
     "start:remote-react": "npm --prefix ./remote-react run start",
     "format": "yarn prettier --write .",

@@ -1,10 +1,10 @@
 <template>
-  <div class="hello">
+  <div class="vu-hello">
     Vue Remote Create App Content
-    <div class="test-scoped">
+    <div class="vu-test-scoped">
       Scoped: <span data="VUE_IN_ANGULAR_INTERACTION_TEXT">{{ msg }}</span>
     </div>
-    <div class="test">Not Scoped: {{ msg }}</div>
+    <div class="vu-test">Not Scoped: {{ msg }}</div>
     <div>
       <button @click="click" data="VUE_IN_ANGULAR_BUTTON">Click Me</button>
     </div>

@@ -7,3 +7,13 @@
 | &#x2611; | Standalone Usage                  |
 | &#x2610; | Data Communication                |
 | &#x2610; | Common Libs(DS/Utilities/API SDK) |
+
+# VScode settings for tailwind
+
+```
+"tailwindCSS.experimental.configFile": {
+    "tailwind.config.js": "shell/**",
+    "remote-vue/tailwind.config.js": "remote-vue/**",
+    "remote-react/tailwind.config.js": "remote-react/**"
+}
+```
