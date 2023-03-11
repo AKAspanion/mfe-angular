@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { reactAppRouteBasePath } from 'shell/src/constants/microfrontends';
+import { environment } from 'shell/src/environments/environment';
 
 @Component({
   selector: 'app-react',
@@ -8,8 +9,9 @@ import { reactAppRouteBasePath } from 'shell/src/constants/microfrontends';
   styleUrls: ['./react.component.scss'],
 })
 export class ReactRemote implements OnDestroy {
-  constructor(private _location: Location) {}
+  public remoteEntry: string = `${environment.reactMFEHost}remoteEntry.js`;
   public reactAppBasename: string = reactAppRouteBasePath;
+  constructor(private _location: Location) {}
 
   private navigationHandler = (event: any) => {
     const newPathname = event.detail;

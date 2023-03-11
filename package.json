@@ -13,9 +13,10 @@
     "start:remote-vue": "npm --prefix ./remote-vue run start",
     "start:remote-react": "npm --prefix ./remote-react run start",
     "format": "yarn prettier --write .",
-    "build:shell": "ng build shell",
+    "build:shell": "ng build shell --configuration production",
     "build:remotes": "lerna run --parallel build",
-    "prebuild:shell": "rm -rf dist"
+    "prebuild:shell": "rm -rf dist",
+    "postbuild:shell": "cp shell/_redirects dist"
   },
   "dependencies": {
     "@angular/animations": "15.0.4",

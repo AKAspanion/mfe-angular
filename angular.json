@@ -27,11 +27,7 @@
             "polyfills": "shell/src/polyfills.ts",
             "tsConfig": "shell/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "shell/src/favicon.ico",
-              "shell/src/assets",
-              "_redirects"
-            ],
+            "assets": ["shell/src/favicon.ico", "shell/src/assets"],
             "styles": ["shell/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "shell/webpack.config.js"
@@ -76,11 +72,7 @@
             "port": 4200
           },
           "configurations": {
-            "development": {
-              "sourceMap": true
-            },
             "production": {
-              "sourceMap": true,
               "browserTarget": "shell:build:production",
               "extraWebpackConfig": "shell/webpack.prod.config.js"
             }

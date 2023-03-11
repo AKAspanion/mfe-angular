@@ -1,3 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
+  vueMFEHost: 'https://remote-vue.netlify.app/',
+  reactMFEHost: 'https://remote-react.netlify.app/',
 };

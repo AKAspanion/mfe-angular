@@ -1,9 +1,9 @@
 <div>
   <federated-component
-    remoteEntry="http://localhost:4202/remoteEntry.js"
     remoteName="react_remote"
     exposedModule="./Bootstrap"
-    [basePathName]="reactAppBasename"
     [isApp]="true"
+    [remoteEntry]="remoteEntry"
+    [basePathName]="reactAppBasename"
     (onRemoteMount)="onMount($event)"></federated-component>
 </div>

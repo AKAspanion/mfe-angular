@@ -1,10 +1,10 @@
 <div>
   <federated-component
-    remoteEntry="http://localhost:4201/remoteEntry.js"
     remoteName="vue_remote"
     exposedModule="./Bootstrap"
-    [basePathName]="vueAppBasename"
     [isApp]="true"
+    [remoteEntry]="remoteEntry"
+    [basePathName]="vueAppBasename"
     (onRemoteMount)="onMount($event)"></federated-component>
   <br />
 </div>
