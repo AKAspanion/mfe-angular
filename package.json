@@ -15,7 +15,8 @@
     "format": "yarn prettier --write .",
     "build:shell": "ng build shell --configuration production",
     "build:remotes": "lerna run --parallel build",
-    "prebuild:shell": "rm -rf dist",
+    "clean": "rm -rf dist",
+    "prebuild:shell": "yarn clean",
     "postbuild:shell": "cp shell/_redirects dist"
   },
   "dependencies": {
