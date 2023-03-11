@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+const prefix = require('./tailwind-prefix');
+
 module.exports = {
-  prefix: 're-',
+  prefix,
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {},

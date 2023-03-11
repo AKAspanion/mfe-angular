@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const prefix = require('./tailwind-prefix');
+
 module.exports = {
-  prefix: 'an-',
+  prefix,
   content: ['./shell/src/**/*.{html,ts}'],
   theme: {
     extend: {},
   },
   plugins: [require('daisyui')],
   daisyui: {
-    darkTheme: 'light',
     themes: [
       {
         light: {

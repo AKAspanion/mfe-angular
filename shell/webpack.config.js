@@ -10,6 +10,14 @@ module.exports = {
   optimization: {
     runtimeChunk: false,
   },
+  module: {
+    rules: [
+      {
+        test: /\.(css|s[ac]ss)$/i,
+        use: ['postcss-loader'],
+      },
+    ],
+  },
   plugins: [
     new ModuleFederationPlugin({
       remotes: {},
