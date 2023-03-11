@@ -12,7 +12,10 @@
     "start:shell": "ng serve shell --live-reload true",
     "start:remote-vue": "npm --prefix ./remote-vue run start",
     "start:remote-react": "npm --prefix ./remote-react run start",
-    "format": "yarn prettier --write ."
+    "format": "yarn prettier --write .",
+    "build:shell": "ng build shell",
+    "build:remotes": "lerna run --parallel build",
+    "prebuild:shell": "rm -rf dist"
   },
   "dependencies": {
     "@angular/animations": "15.0.4",

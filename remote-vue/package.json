@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve --port 4201",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:start": "npx serve -s -p 4201 dist",
+    "prebuild": "rm -rf dist"
   },
   "dependencies": {
     "vue": "3.2.13",

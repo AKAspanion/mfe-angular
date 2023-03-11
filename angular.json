@@ -21,13 +21,17 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/shell",
+            "outputPath": "dist",
             "index": "shell/src/index.html",
             "main": "shell/src/main.ts",
             "polyfills": "shell/src/polyfills.ts",
             "tsConfig": "shell/tsconfig.app.json",
             "aot": true,
-            "assets": ["shell/src/favicon.ico", "shell/src/assets"],
+            "assets": [
+              "shell/src/favicon.ico",
+              "shell/src/assets",
+              "_redirects"
+            ],
             "styles": ["shell/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "shell/webpack.config.js"
