@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --config ./webpack.config.js --open --mode development",
-    "build": "webpack --config ./webpack.config.js --mode production",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config ./webpack.config.js --mode production",
     "build:start": "npx serve -s -p 4202 dist",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
@@ -15,7 +15,6 @@
     "autoprefixer": "10.4.14",
     "cross-env": "^7.0.3",
     "css-loader": "6.3.0",
-    "daisyui": "2.51.3",
     "esbuild-loader": "3.0.1",
     "fork-ts-checker-webpack-plugin": "8.0.0",
     "html-webpack-plugin": "5.3.2",

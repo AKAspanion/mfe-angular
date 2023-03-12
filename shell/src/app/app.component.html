@@ -1,176 +1,106 @@
-<div class="an-p-4">
-  <nav class="an-navbar an-bg-base-200 an-rounded-xl">
-    <div class="an-navbar-start">
-      <div class="an-dropdown">
-        <label tabindex="0" class="an-btn an-btn-ghost an-lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="an-h-5 an-w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
-        </label>
-        <ul
-          tabindex="0"
-          class="an-menu an-menu-compact an-dropdown-content an-mt-3 an-p-2 an-shadow an-bg-base-100 an-rounded-box an-w-52">
-          <li tabindex="0">
-            <a class="an-justify-between" routerLink="home">
-              Home
-              <svg
-                class="an-fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24">
-                <path
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-              </svg>
-            </a>
-
-            <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-              <li>
-                <a routerLink="home/page-1">About</a>
-              </li>
-              <li>
-                <a routerLink="home/page-2">Profile</a>
-              </li>
-            </ul>
-          </li>
-          <li tabindex="0">
-            <a class="an-justify-between" routerLink="home">
-              React
-              <svg
-                class="an-fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24">
-                <path
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-              </svg>
-            </a>
-
-            <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-              <li>
-                <a routerLink="remote-react/page-1">Sales</a>
-              </li>
-              <li>
-                <a routerLink="remote-react/page-2">Admin</a>
-              </li>
-            </ul>
-          </li>
-          <li tabindex="0">
-            <a class="an-justify-between" routerLink="home">
-              Vue
-              <svg
-                class="an-fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24">
-                <path
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-              </svg>
-            </a>
-
-            <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-              <li>
-                <a routerLink="remote-vue/page-1">Page 1</a>
-              </li>
-              <li>
-                <a routerLink="remote-vue/page-2">Page 2</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <a
-        class="an-btn an-btn-ghost an-normal-case an-text-xl"
-        routerLink="/home"
-        >Angular MFE</a
-      >
-    </div>
-    <div class="an-navbar-center an-hidden an-lg:flex">
-      <ul class="an-menu an-menu-horizontal an-px-1">
-        <li tabindex="0">
-          <a routerLink="home">
-            Home
-            <svg
-              class="an-fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24">
-              <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-            </svg>
-          </a>
-          <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-            <li>
-              <a routerLink="home/page-1">About</a>
-            </li>
-            <li>
-              <a routerLink="home/page-2">Profile</a>
-            </li>
-          </ul>
+<div class="an-p-4 dark">
+  <aside
+    id="sidebar-multi-level-sidebar"
+    [ngClass]="sidebarOpen ? 'an-w-64' : 'an-w-16'"
+    class="an-fixed an-top-0 an-left-0 an-z-40 an-h-screen an-transition-transform an--translate-x-full sm:an-translate-x-0"
+    aria-label="Sidebar">
+    <div
+      class="an-h-full an-px-3 an-py-4 an-overflow-y-auto an-bg-gray-50 dark:an-bg-gray-800">
+      <ul class="an-space-y-2">
+        <li>
+          <div
+            (click)="toggleSidebar()"
+            class="an-flex an-items-center an-p-2 an-text-base an-font-normal an-text-gray-900 an-rounded-lg">
+            <img
+              class="an-w-6 an-h-6 an-mr-4"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODcwIiBoZWlnaHQ9Ijg3MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBjbGFzcz0ibG9nby1yZXNpemUiPjxnIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik00MzUgLjFDMTk0LjguMS4xIDE5NC44LjEgNDM1YzAgMTg3LjMgMTE4LjQgMzQ2LjkgMjg0LjQgNDA4LjEgMy4zLTI5LjkgMTUtNTcuMiAzMi43LTc5LjYgMTIuMS0xNS40IDI2LjktMjguNSA0My45LTM4LjQgMi4xLTUgNC42LTEwLjYgNy4xLTE2LjYtNTAuMy0yNi04NC43LTc4LjEtODQuNy0xMzguNiAwLTUxLjcgMjUuMy05Ny43IDY0LTEyNS45LTEwLjktMjAuNi0yMS4zLTQwLjItMzEuOC01OC4yLTE4LjEtMzEuNS00Ni43LTU5LjctNjguNC03OC45LTIxIDExLjktNDcuOCA0LjctNTkuNy0xNi4zLTExLjktMjEtNC43LTQ3LjggMTYuMy01OS43IDIxLTExLjkgNDcuNC00LjcgNTkuNyAxNS45di40YzcuMiAxMi43IDcuMiAyNy41IDEuOCAzOS44IDIyLjggMTkuNSA1Ni44IDUyLjUgNzcuOCA4OSA5LjggMTcgMTkuNSAzNC43IDI5LjMgNTMuNSAyMC4zLTkuNCA0Mi43LTE0LjggNjYuMi0xNC44IDIxLjMgMCA0MS42IDQuMyA2MC4xIDExLjkgOS44LTE4LjUgMTkuNS0zNi4yIDI4LjktNTIuOCAyMS0zNi4yIDU0LjYtNjguNyA3Ny40LTg4LjMtNS40LTEyLjMtNS40LTI2LjggMS44LTM5LjR2LS40YzEyLjMtMjAuNiAzOC43LTI3LjkgNTkuMy0xNS45IDIxIDExLjkgMjguMiAzOC43IDE2LjMgNTkuMy0xMS45IDIxLTM4LjQgMjguMi01OS4zIDE2LjMtMjEuNyAxOC44LTQ5LjkgNDcuNC02OCA3OC41LTEwLjEgMTcuNC0yMC4zIDM2LjUtMzAuOCA1Ni40IDQyIDI3LjkgNjkuOCA3NS4zIDY5LjggMTI5LjUgMCA2My0zNi45IDExNi45LTkwLjQgMTQxLjUuOSAyLjcgMiA0LjkgMyA3LjIgNDcgMjIuMyA4MS4xIDY3LjQgODcuOSAxMjEuMUM3NTUuOSA3NzYgODY5LjkgNjE4LjggODY5LjkgNDM1IDg2OS45IDE5NC44IDY3NS4yLjEgNDM1IC4xeiIgZmlsbD0iI0NBMDAwMCIvPjxwYXRoIGQ9Ik0yODQuOCA4NDMuM2guMS0uMXptMCAwYy0uMSAwLS4zLS4xLS40LS4xLjIgMCAuMyAwIC40LjF6IiBmaWxsPSIjRkZGIi8+PHBhdGggZD0iTTY2Ni4yIDIyOS44Yy0yMC42LTExLjktNDctNC43LTU5LjMgMTUuOXYuNGMtNy4yIDEyLjctNy4yIDI3LjEtMS44IDM5LjQtMjIuOCAxOS41LTU2LjQgNTIuMS03Ny40IDg4LjMtOS40IDE2LjYtMTkuMiAzNC40LTI4LjkgNTIuOC0xOC41LTcuNi0zOC43LTExLjktNjAuMS0xMS45LTIzLjUgMC00NS45IDUuNC02Ni4yIDE0LjgtOS44LTE4LjgtMTkuNS0zNi41LTI5LjMtNTMuNS0yMS0zNi41LTU1LTY5LjUtNzcuOC04OSA1LjQtMTIuMyA1LjQtMjcuMS0xLjgtMzkuOHYtLjRjLTEyLjMtMjAuNi0zOC43LTI3LjktNTkuNy0xNS45LTIxIDExLjktMjguMiAzOC43LTE2LjMgNTkuNyAxMS45IDIxIDM4LjcgMjguMiA1OS43IDE2LjMgMjEuNyAxOS4yIDUwLjMgNDcuNCA2OC40IDc4LjkgMTAuNSAxOC4xIDIxIDM3LjYgMzEuOCA1OC4yLTM4LjcgMjguMi02NCA3NC4yLTY0IDEyNS45IDAgNjAuNCAzNC40IDExMi41IDg0LjcgMTM4LjYtMi41IDYuMi01LjEgMTEuOS03LjIgMTctNDEuNiAyNC40LTcwLjggNjcuNC03Ni40IDExNy42IDQ2LjkgMTcuMyA5Ny42IDI2LjggMTUwLjYgMjYuOCA1Ni4yIDAgMTA5LjktMTAuNyAxNTkuMi0zMC4xLTcuMS01Mi44LTQwLjUtOTcuMy04Ni44LTExOS44LTEuMS0yLjktMi41LTUuNC0zLjYtOC43IDUzLjUtMjQuNiA5MC40LTc4LjUgOTAuNC0xNDEuNSAwLTU0LjMtMjcuOS0xMDEuNy02OS44LTEyOS41IDEwLjUtMTkuOSAyMC42LTM5LjEgMzAuOC01Ni40IDE4LjEtMzEuMSA0Ni4zLTU5LjcgNjgtNzguNSAyMSAxMS45IDQ3LjQgNC43IDU5LjMtMTYuMyAxMS43LTIwLjUgNC41LTQ3LjMtMTYuNS01OS4zeiIgZmlsbD0iI0ZGRiIgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjUiLz48L2c+PC9zdmc+" />
+          </div>
         </li>
-        <li tabindex="0">
-          <a routerLink="remote-react">
-            React
+        <li class="an-group">
+          <a
+            routerLink="home"
+            class="an-flex an-items-center an-p-2 an-text-base an-font-normal an-text-gray-900 an-rounded-lg dark:an-text-white hover:an-bg-gray-100 dark:hover:an-bg-gray-700">
             <svg
-              class="an-fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24">
+              class="an-flex-shrink-0 an-w-6 an-h-6 an-text-gray-500 an-transition an-duration-75 dark:an-text-gray-400 group-hover:an-text-angular dark:group-hover:an-text-white"
+              fill="currentColor"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>Angular</title>
               <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.596-5.242L23.32 3.984 11.999.001zm7.064 18.31h-2.638l-1.422-3.503H8.996l-1.422 3.504h-2.64L12 2.65z" />
             </svg>
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-flex-1 an-ml-3 an-whitespace-nowrap"
+              >Angular</span
+            >
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-inline-flex an-items-center an-justify-center an-px-2 an-ml-3 an-text-sm an-font-medium an-text-gray-800 an-bg-gray-200 an-rounded-full dark:an-bg-gray-700 dark:an-text-gray-300"
+              >Shell</span
+            >
           </a>
-          <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-            <li>
-              <a routerLink="remote-react/page-1">Sales</a>
-            </li>
-            <li>
-              <a routerLink="remote-react/page-2">Admin</a>
-            </li>
-          </ul>
         </li>
-        <li tabindex="0">
-          <a routerLink="remote-vue">
-            Vue
+        <li class="an-group">
+          <a
+            routerLink="remote-react/"
+            class="an-flex an-items-center an-p-2 an-text-base an-font-normal an-text-gray-900 an-rounded-lg dark:an-text-white hover:an-bg-gray-100 dark:hover:an-bg-gray-700">
             <svg
-              class="an-fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24">
+              aria-hidden="true"
+              class="an-flex-shrink-0 an-w-6 an-h-6 an-text-gray-500 an-transition an-duration-75 dark:an-text-gray-400 group-hover:an-text-react dark:group-hover:an-text-white"
+              fill="currentColor"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>React</title>
               <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z" />
             </svg>
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-flex-1 an-ml-3 an-whitespace-nowrap"
+              >React</span
+            >
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-inline-flex an-items-center an-justify-center an-px-2 an-ml-3 an-text-sm an-font-medium an-text-gray-800 an-bg-gray-200 an-rounded-full dark:an-bg-gray-700 dark:an-text-gray-300"
+              >Remote</span
+            >
           </a>
-          <ul class="an-p-2 an-dark:bg-slate-700 an-bg-slate-50">
-            <li>
-              <a routerLink="remote-vue/page-1">Page 1</a>
-            </li>
-            <li>
-              <a routerLink="remote-vue/page-2">Page 2</a>
-            </li>
-          </ul>
+        </li>
+        <li class="an-group">
+          <a
+            routerLink="remote-vue/"
+            class="an-flex an-items-center an-p-2 an-text-base an-font-normal an-text-gray-900 an-rounded-lg dark:an-text-white hover:an-bg-gray-100 dark:hover:an-bg-gray-700">
+            <svg
+              aria-hidden="true"
+              class="an-flex-shrink-0 an-w-6 an-h-6 an-text-gray-500 an-transition an-duration-75 dark:an-text-gray-400 group-hover:an-text-vue dark:group-hover:an-text-white"
+              fill="currentColor"
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>Vue.js</title>
+              <path
+                d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z" />
+            </svg>
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-flex-1 an-ml-3 an-whitespace-nowrap"
+              >Vue</span
+            >
+            <span
+              *ngIf="sidebarOpen == true"
+              class="an-inline-flex an-items-center an-justify-center an-px-2 an-ml-3 an-text-sm an-font-medium an-text-gray-800 an-bg-gray-200 an-rounded-full dark:an-bg-gray-700 dark:an-text-gray-300"
+              >Remote</span
+            >
+          </a>
         </li>
       </ul>
     </div>
-    <div class="an-navbar-end">
-      <img
-        class="an-w-8 an-h-8 an-mr-4"
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODcwIiBoZWlnaHQ9Ijg3MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBjbGFzcz0ibG9nby1yZXNpemUiPjxnIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik00MzUgLjFDMTk0LjguMS4xIDE5NC44LjEgNDM1YzAgMTg3LjMgMTE4LjQgMzQ2LjkgMjg0LjQgNDA4LjEgMy4zLTI5LjkgMTUtNTcuMiAzMi43LTc5LjYgMTIuMS0xNS40IDI2LjktMjguNSA0My45LTM4LjQgMi4xLTUgNC42LTEwLjYgNy4xLTE2LjYtNTAuMy0yNi04NC43LTc4LjEtODQuNy0xMzguNiAwLTUxLjcgMjUuMy05Ny43IDY0LTEyNS45LTEwLjktMjAuNi0yMS4zLTQwLjItMzEuOC01OC4yLTE4LjEtMzEuNS00Ni43LTU5LjctNjguNC03OC45LTIxIDExLjktNDcuOCA0LjctNTkuNy0xNi4zLTExLjktMjEtNC43LTQ3LjggMTYuMy01OS43IDIxLTExLjkgNDcuNC00LjcgNTkuNyAxNS45di40YzcuMiAxMi43IDcuMiAyNy41IDEuOCAzOS44IDIyLjggMTkuNSA1Ni44IDUyLjUgNzcuOCA4OSA5LjggMTcgMTkuNSAzNC43IDI5LjMgNTMuNSAyMC4zLTkuNCA0Mi43LTE0LjggNjYuMi0xNC44IDIxLjMgMCA0MS42IDQuMyA2MC4xIDExLjkgOS44LTE4LjUgMTkuNS0zNi4yIDI4LjktNTIuOCAyMS0zNi4yIDU0LjYtNjguNyA3Ny40LTg4LjMtNS40LTEyLjMtNS40LTI2LjggMS44LTM5LjR2LS40YzEyLjMtMjAuNiAzOC43LTI3LjkgNTkuMy0xNS45IDIxIDExLjkgMjguMiAzOC43IDE2LjMgNTkuMy0xMS45IDIxLTM4LjQgMjguMi01OS4zIDE2LjMtMjEuNyAxOC44LTQ5LjkgNDcuNC02OCA3OC41LTEwLjEgMTcuNC0yMC4zIDM2LjUtMzAuOCA1Ni40IDQyIDI3LjkgNjkuOCA3NS4zIDY5LjggMTI5LjUgMCA2My0zNi45IDExNi45LTkwLjQgMTQxLjUuOSAyLjcgMiA0LjkgMyA3LjIgNDcgMjIuMyA4MS4xIDY3LjQgODcuOSAxMjEuMUM3NTUuOSA3NzYgODY5LjkgNjE4LjggODY5LjkgNDM1IDg2OS45IDE5NC44IDY3NS4yLjEgNDM1IC4xeiIgZmlsbD0iI0NBMDAwMCIvPjxwYXRoIGQ9Ik0yODQuOCA4NDMuM2guMS0uMXptMCAwYy0uMSAwLS4zLS4xLS40LS4xLjIgMCAuMyAwIC40LjF6IiBmaWxsPSIjRkZGIi8+PHBhdGggZD0iTTY2Ni4yIDIyOS44Yy0yMC42LTExLjktNDctNC43LTU5LjMgMTUuOXYuNGMtNy4yIDEyLjctNy4yIDI3LjEtMS44IDM5LjQtMjIuOCAxOS41LTU2LjQgNTIuMS03Ny40IDg4LjMtOS40IDE2LjYtMTkuMiAzNC40LTI4LjkgNTIuOC0xOC41LTcuNi0zOC43LTExLjktNjAuMS0xMS45LTIzLjUgMC00NS45IDUuNC02Ni4yIDE0LjgtOS44LTE4LjgtMTkuNS0zNi41LTI5LjMtNTMuNS0yMS0zNi41LTU1LTY5LjUtNzcuOC04OSA1LjQtMTIuMyA1LjQtMjcuMS0xLjgtMzkuOHYtLjRjLTEyLjMtMjAuNi0zOC43LTI3LjktNTkuNy0xNS45LTIxIDExLjktMjguMiAzOC43LTE2LjMgNTkuNyAxMS45IDIxIDM4LjcgMjguMiA1OS43IDE2LjMgMjEuNyAxOS4yIDUwLjMgNDcuNCA2OC40IDc4LjkgMTAuNSAxOC4xIDIxIDM3LjYgMzEuOCA1OC4yLTM4LjcgMjguMi02NCA3NC4yLTY0IDEyNS45IDAgNjAuNCAzNC40IDExMi41IDg0LjcgMTM4LjYtMi41IDYuMi01LjEgMTEuOS03LjIgMTctNDEuNiAyNC40LTcwLjggNjcuNC03Ni40IDExNy42IDQ2LjkgMTcuMyA5Ny42IDI2LjggMTUwLjYgMjYuOCA1Ni4yIDAgMTA5LjktMTAuNyAxNTkuMi0zMC4xLTcuMS01Mi44LTQwLjUtOTcuMy04Ni44LTExOS44LTEuMS0yLjktMi41LTUuNC0zLjYtOC43IDUzLjUtMjQuNiA5MC40LTc4LjUgOTAuNC0xNDEuNSAwLTU0LjMtMjcuOS0xMDEuNy02OS44LTEyOS41IDEwLjUtMTkuOSAyMC42LTM5LjEgMzAuOC01Ni40IDE4LjEtMzEuMSA0Ni4zLTU5LjcgNjgtNzguNSAyMSAxMS45IDQ3LjQgNC43IDU5LjMtMTYuMyAxMS43LTIwLjUgNC41LTQ3LjMtMTYuNS01OS4zeiIgZmlsbD0iI0ZGRiIgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjUiLz48L2c+PC9zdmc+" />
-    </div>
-  </nav>
+  </aside>
+
+  <section [ngClass]="sidebarOpen ? 'an-ml-64' : 'an-ml-16'" class="an-p-4">
+    <router-outlet></router-outlet>
+  </section>
 </div>
-<router-outlet></router-outlet>

@@ -20,6 +20,7 @@ let startUrl = '';
 })
 export class AppComponent implements OnInit {
   title = 'shell';
+  public sidebarOpen = false;
   private reactAppBasename: string = reactAppRouteBasePath;
   private vueAppBasename: string = vueAppRouteBasePath;
 
@@ -36,6 +37,9 @@ export class AppComponent implements OnInit {
         this.handleNavigation(event.url);
       }
     });
+  }
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
   private handleNavigation = (url?: string) => {
     if (!url) {
