@@ -10,6 +10,10 @@ module.exports = defineConfig({
   },
   publicPath: 'auto',
   configureWebpack: {
+    devServer: {
+      liveReload: true,
+      historyApiFallback: true,
+    },
     optimization: {
       splitChunks: {
         cacheGroups: {
