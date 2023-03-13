@@ -20,7 +20,7 @@ let startUrl = '';
 })
 export class AppComponent implements OnInit {
   title = 'shell';
-  public sidebarOpen = false;
+  public sidebarOpen = true;
   private reactAppBasename: string = reactAppRouteBasePath;
   private vueAppBasename: string = vueAppRouteBasePath;
 

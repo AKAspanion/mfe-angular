@@ -19,7 +19,7 @@ module.exports = {
     watchFiles: ['src/**/*'],
     historyApiFallback: true,
     liveReload: true,
-    port: 4211,
+    port: 4220,
   },
   module: {
     rules: [

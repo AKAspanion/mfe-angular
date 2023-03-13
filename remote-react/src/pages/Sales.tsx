@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Sales() {
   return (
-    <div className="re-p-4">
+    <div>
       <h2>Microfrontend React</h2>
       <p className="re-text-2xl re-font-bold">Welcome to Sales Page</p>
       <br />

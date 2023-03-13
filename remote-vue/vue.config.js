@@ -11,8 +11,12 @@ module.exports = defineConfig({
   publicPath: 'auto',
   configureWebpack: {
     devServer: {
-      liveReload: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      watchFiles: ['src/**/*'],
       historyApiFallback: true,
+      liveReload: true,
     },
     optimization: {
       splitChunks: {

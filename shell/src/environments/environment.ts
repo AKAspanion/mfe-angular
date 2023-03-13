@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  vueMFEHost: 'http://localhost:4211/',
-  reactMFEHost: 'http://localhost:4211/',
+  vueMFEHost: 'http://localhost:4210/',
+  reactMFEHost: 'http://localhost:4220/',
 };
 
 /*

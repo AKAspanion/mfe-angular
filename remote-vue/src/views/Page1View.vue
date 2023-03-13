@@ -1,5 +1,5 @@
 <template>
-  <div class="vu-p-4">
+  <div>
     <h2>Microfrontend Vue</h2>
     <p class="vu-text-2xl vu-font-bold">Welcome to Products Page</p>
     <br />

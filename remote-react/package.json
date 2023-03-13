@@ -4,7 +4,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --node-env development",
     "build": "webpack --config ./webpack.config.js --mode production",
-    "build:start": "npx serve -s -p 4211 dist",
+    "build:start": "npx serve -s -p 4220 dist",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
     "postbuild": "cp public/_redirects dist",

@@ -41,20 +41,23 @@ export class FederatedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const domElemet = this.createRemoteContainer(
+    const domElement = this.createRemoteContainer(
       this.remoteName + this.exposedModule
     );
-    domElemet.innerHTML = 'Loading...';
+    domElement.innerHTML = `<div class="an-p-6 an-h-screen an-w-full">
+      <div class="an-rounded-xl an-bg-gray-50 an-w-full an-h-full">
+      </div>
+    </div>`;
     loadRemoteModule({
       remoteEntry: this.remoteEntry,
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
     }).then(federated => {
-      domElemet.innerHTML = '';
+      domElement.innerHTML = '';
       const entity = federated[this.componentName];
 
       if (this.isApp) {
-        entity.mount(domElemet, {
+        entity.mount(domElement, {
           history: false,
           basename: this.basePathName,
         });

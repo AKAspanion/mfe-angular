@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve --port 4211 --open",
+    "start": "vue-cli-service serve --port 4210 --open",
     "build": "vue-cli-service build",
-    "build:start": "npx serve -s -p 4211 dist",
+    "build:start": "npx serve -s -p 4210 dist",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
     "postbuild": "cp public/_redirects dist"
