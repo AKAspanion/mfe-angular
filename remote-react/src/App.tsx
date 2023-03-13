@@ -89,35 +89,6 @@ const AppWithStore: React.FC<AppProps> = props => {
   return <Provider store={store || getLocalStore()}>{children}</Provider>;
 };
 
-// const App: React.FC = () => {
-//   const dispatch = useDispatch();
-//   const state = useSelector((state: StoreShape) => state[remoteAppScope]);
-//   const [remoteAppInput, setRemoteAppInput] = useState('');
-
-//   return (
-//     <div style={{ padding: 16 }}>
-//       <h1>Hello from React Application</h1>
-//       <div style={{ marginBottom: '10px' }}>
-//         RemoteApp's name from the redux store :{' '}
-//         <strong>{state && state?.appName}</strong>
-//       </div>
-
-//       <div>
-//         <input
-//           style={{ marginRight: '10px' }}
-//           type="text"
-//           onChange={e => {
-//             setRemoteAppInput(e.target.value);
-//           }}
-//         />
-//         <button onClick={() => dispatch(changeAppNameAction(remoteAppInput))}>
-//           Dispatch app1 new name
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
 export default AppDefault;
 
 AppDefault.displayName = 'App1';
