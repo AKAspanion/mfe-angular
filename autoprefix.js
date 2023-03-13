@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-const rootDir = 'shell\\src';
-const prefix = 'an-';
+const rootDir = 'remote-react\\src';
+const prefix = 're-';
 const targetFiles = 'js,jsx,tsx,vue,html';
-const classIdentifier = 'class';
+const classIdentifier = 'className';
 // const classNameRegex = /class=\["'\](\[\w\s-\]+)\["'\]/g;
 
 const classNameRegex = new RegExp(
@@ -13,7 +13,8 @@ const classNameRegex = new RegExp(
   'g'
 );
 
-glob(`**/*.{${targetFiles}}`, { cwd: rootDir }, (er, files) => {
+glob(`**/**/*.{${targetFiles}}`, { cwd: rootDir }, (er, files) => {
+  console.log(files);
   files.forEach(file => {
     const filePath = path.join(rootDir, file);
     fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -22,7 +23,10 @@ glob(`**/*.{${targetFiles}}`, { cwd: rootDir }, (er, files) => {
         return;
       }
       const result = data.replace(classNameRegex, (match, p1) => {
-        const classNames = p1.split(' ');
+        const classNames = p1
+          .split(' ')
+          .map(s => s.trim())
+          .filter(Boolean);
         const prefixedClassNames = classNames.map(className => {
           if (className.startsWith(prefix)) {
             return className;
@@ -47,7 +51,11 @@ glob(`**/*.{${targetFiles}}`, { cwd: rootDir }, (er, files) => {
                 if (psuedoList.includes(psuedoClass)) {
                   return psuedoClass;
                 } else {
-                  return `${prefix}${psuedoClass}`;
+                  if (psuedoClass.startsWith(prefix)) {
+                    return psuedoClass;
+                  } else {
+                    return `${prefix}${psuedoClass}`;
+                  }
                 }
               });
               return parsedPsuedoClasses.join(':');

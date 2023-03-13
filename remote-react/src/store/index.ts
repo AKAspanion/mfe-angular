@@ -59,7 +59,9 @@ const createStore = (defaultState: StoreShape) => {
 
   store.subscribe(() => {
     const state = store.getState();
-    console.log(state);
+    window.dispatchEvent(
+      new CustomEvent('[remote-react] state sync', { detail: state })
+    );
   });
 
   return store;

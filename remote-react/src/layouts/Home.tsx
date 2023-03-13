@@ -8,7 +8,7 @@ function Home() {
         <div className="re-px-2 re-text-2xl re-font-bold">React</div>
         <div className="re-group">
           <Link
-            className="hover:re-bg-primary re-flex re-items-center re-p-2 re-text-base re-font-normal re-text-gray-900 re-rounded-lg dark:re-text-white "
+            className="hover:re-bg-primary re-flex re-items-center re-p-2 re-text-base re-font-normal re-text-gray-900 re-rounded-lg dark:re-text-white"
             to={'/page-1'}>
             <svg
               fill="currentColor"
@@ -25,7 +25,7 @@ function Home() {
         </div>
         <div className="re-group">
           <Link
-            className="hover:re-bg-primary re-flex re-items-center re-p-2 re-text-base re-font-normal re-text-gray-900 re-rounded-lg dark:re-text-white "
+            className="hover:re-bg-primary re-flex re-items-center re-p-2 re-text-base re-font-normal re-text-gray-900 re-rounded-lg dark:re-text-white"
             to={'/page-2'}>
             <svg
               fill="currentColor"

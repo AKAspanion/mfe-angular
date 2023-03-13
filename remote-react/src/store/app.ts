@@ -16,7 +16,7 @@ export const selectInContainer = (state: StoreShape) => {
 };
 
 // actions
-export const changeAppNameAction = (appName: string) => {
+export const setAppName = (appName: string) => {
   return { type: CHANGE_HOME_APP_NAME, payload: appName };
 };
 

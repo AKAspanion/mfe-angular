@@ -59,6 +59,7 @@ export class FederatedComponent implements OnInit {
       if (this.isApp) {
         entity.mount(domElement, {
           history: false,
+          inContainer: true,
           basename: this.basePathName,
         });
       } else {
