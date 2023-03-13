@@ -1,14 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import store from './store';
-import { useAppStore } from './store/app';
-
-const state = useAppStore(store);
+import createStore from './store';
 
 const app = inContainer => {
-  state.$state = { inContainer };
+  const store = createStore({ appName: 'VueApp', inContainer });
 
-  return createApp(App);
+  return createApp(App).use(store);
 };
 
 export default app;
