@@ -3,24 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import {
-  applyMiddleware,
-  createStore,
-  compose,
-  combineReducers,
-  StoreEnhancer,
-} from 'redux';
-import thunk from 'redux-thunk';
-import { ReactStore, StoreShape } from '../@types/shared-store';
-import { changeAppNameAction, reducers } from './reducer';
+import { ReactStore } from '../@types/shared-store';
 
 import './App.css';
 
-const remoteAppScope = 'app1';
-
 export declare type AppProps = {
   basename?: string;
-  store?: ReactStore;
+  store: ReactStore;
   history: ReturnType<typeof createBrowserRouter>;
   children?: React.ReactNode;
 };
@@ -65,28 +54,7 @@ const AppWithRoute: React.FC<AppProps> = props => {
 const AppWithStore: React.FC<AppProps> = props => {
   const { store, children } = props;
 
-  useEffect(() => {
-    if (store) {
-      store.registerReducer({ ...reducers });
-    }
-  }, []);
-
-  const getLocalStore = useCallback(
-    () =>
-      createStore(
-        combineReducers({ ...reducers }),
-        undefined,
-        compose(
-          applyMiddleware(thunk),
-          window.__REDUX_DEVTOOLS_EXTENSION__
-            ? window.__REDUX_DEVTOOLS_EXTENSION__()
-            : (f: unknown) => f
-        ) as StoreEnhancer<unknown>
-      ),
-    []
-  );
-
-  return <Provider store={store || getLocalStore()}>{children}</Provider>;
+  return <Provider store={store}>{children}</Provider>;
 };
 
 export default AppDefault;

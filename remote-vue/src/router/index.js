@@ -1,4 +1,8 @@
-import { createMemoryHistory, createRouter } from 'vue-router';
+import {
+  createMemoryHistory,
+  createRouter,
+  createWebHistory,
+} from 'vue-router';
 import NotFound from '../views/NotFound.vue';
 
 const routes = [
@@ -51,7 +55,9 @@ const routes = [
 ];
 
 const routing = (basename, routerStrategy) => {
-  const history = routerStrategy || createMemoryHistory(basename);
+  const history = routerStrategy
+    ? createWebHistory(basename)
+    : createMemoryHistory(basename);
 
   return createRouter({
     history,

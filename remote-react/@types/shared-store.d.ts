@@ -12,16 +12,17 @@ export type ReduxAction = {
   payload?: unknown;
 };
 
-export type App1State = {
+export type AppState = {
   appName: string;
+  inContainer?: boolean;
 };
 
 export type ReducerMap = {
-  app1?: Reducer;
+  app?: Reducer;
 };
 
 export type StoreShape = {
-  app1?: App1State;
+  app?: AppState;
 };
 
 export type ReactStore = Store<StoreShape> & {
