@@ -5,19 +5,28 @@ import { lazy, Suspense } from 'react';
 
 import Fallback from '../components/Fallback';
 
-const Home = lazy(() => import('../pages/Home'));
+const Home = lazy(() => import('../layouts/Home'));
 const Sales = lazy(() => import('../pages/Sales'));
 const Admin = lazy(() => import('../pages/Admin'));
+const HomePage = lazy(() => import('../pages/HomePage'));
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: '',
     element: (
       <Suspense fallback={<Fallback />}>
         <Home />
       </Suspense>
     ),
     children: [
+      {
+        path: '',
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <HomePage />
+          </Suspense>
+        ),
+      },
       {
         path: 'page-1',
         element: (
@@ -34,11 +43,11 @@ const routes: RouteObject[] = [
           </Suspense>
         ),
       },
-      {
-        path: '*',
-        element: <NotFound />,
-      },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ];
 

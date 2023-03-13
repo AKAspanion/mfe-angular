@@ -6,6 +6,7 @@ import {
 import { RoleGuardService as RoleGuard } from './auth/role-guard.service';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,8 +32,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./remotes/vue/vue-routing.module').then(m => m.VueRoutingModule),
   },
+
   {
     path: 'login',
     component: LoginComponent,
   },
+  { path: '**', component: NotFoundComponent },
 ];

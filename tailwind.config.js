@@ -1,6 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 
 const prefix = require('./tailwind-prefix');
+const daisyui = require('daisyui');
+
+const customeColors = {
+  primary: '#a6120d',
+  'primary-focus': '#840703',
+  angular: '#a6120d',
+  react: '#61DBFB',
+  vue: '#42b883',
+};
 
 module.exports = {
   darkMode: 'class',
@@ -8,13 +17,19 @@ module.exports = {
   content: ['./shell/src/**/*.{html,ts}'],
   theme: {
     extend: {
-      colors: {
-        primary: '#a6120d',
-        angular: '#a6120d',
-        react: '#61DBFB',
-        vue: '#42b883',
-      },
+      colors: customeColors,
     },
   },
-  plugins: [],
+  plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+          ...customeColors,
+        },
+      },
+    ],
+    darkTheme: '',
+  },
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, redirect } from 'react-router-dom';
 
 function Home() {
   return (

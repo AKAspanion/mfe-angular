@@ -16,6 +16,7 @@ import { VueRemote } from './remotes/vue/vue.component';
 import { RouteEventsService } from './route-events.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { RoleGuardService } from './auth/role-guard.service';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -31,6 +32,7 @@ export function initializeApp(
     PageTwo,
     ReactRemote,
     VueRemote,
+    NotFoundComponent,
     LoginComponent,
     FederatedComponent,
   ],
