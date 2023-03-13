@@ -3,14 +3,25 @@
     This is the home page of vue application.
   </p>
   <p>You can visit the standalone deployed Vue App here: </p>
-  <a class="vu-underline vu-text-primary hover:vu-text-gray-500" href="https://remote-vue.netlify.app/"
-    target="_blank">Standalone React</a>
+  <a v-if="isInContainer" class="vu-underline vu-text-primary hover:vu-text-gray-500"
+    href="https://remote-vue.netlify.app/" target="_blank">Standalone React</a>
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue"
+import { useAppStore } from "@/store/app";
+export default defineComponent({
   name: 'HomeView',
-};
+  setup() {
+    const appStore = useAppStore()
+    return { appStore }
+  },
+  computed: {
+    isInContainer() {
+      return this.appStore.isInContainer;
+    },
+  },
+});
 </script>
 <style>
 img {
