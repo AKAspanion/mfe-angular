@@ -14,7 +14,6 @@ export const selectAppName = (state: StoreShape) => {
 };
 
 export const selectIsStandalone = (state: StoreShape) => {
-  console.log('selector', { state });
   return state?.app?.standalone;
 };
 

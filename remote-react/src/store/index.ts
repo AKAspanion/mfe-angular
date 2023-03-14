@@ -58,7 +58,6 @@ const configureStore = (defaultState: StoreShape) => {
 
 const createStore = (defaultState: StoreShape) => {
   const store = configureStore(defaultState);
-  console.log('defaultState', defaultState);
 
   store.registerReducer({ ...reducers });
 
