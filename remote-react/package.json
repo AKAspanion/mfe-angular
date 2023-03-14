@@ -7,7 +7,7 @@
     "build:start": "npx serve -s -p 4220 dist",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
-    "postbuild": "cp public/_redirects dist",
+    "postbuild": "cp public/_redirects dist && cp public/favicon.ico dist",
     "openssl": "NODE_OPTIONS=--openssl-legacy-provider"
   },
   "devDependencies": {
