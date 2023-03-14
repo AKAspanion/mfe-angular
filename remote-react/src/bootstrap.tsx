@@ -12,41 +12,29 @@ type ReactMount = {
   state?: any;
   basename?: string;
   standalone?: boolean;
-  store?: ReactStore;
   history?: boolean;
 };
 
 const mount = (
   mountPoint: HTMLElement,
-  {
-    state = {},
-    store,
-    history,
-    basename = '/',
-    standalone = false,
-  }: ReactMount = {}
+  { state = {}, history, basename = '/', standalone = false }: ReactMount = {}
 ) => {
   const router = history
     ? createBrowserRouter(routes)
     : createMemoryRouter(routes, { basename });
 
   console.log('React prop state', state);
-  const newState = merge(structuredClone(state), {
-    app: { standalone },
-    standalone,
-  });
+  const newState = merge(structuredClone(state), { app: { standalone } });
 
   console.log('React state', newState);
-  newState.app.standalone = standalone;
-  newState.standalone = standalone;
 
-  const storeProp = store ?? createStore(newState);
+  const store = createStore(newState);
 
-  storeProp.registerReducer({ ...reducers });
+  store.registerReducer({ ...reducers });
 
   const root = createRoot(mountPoint);
 
-  root.render(<App history={router} store={storeProp} basename={basename} />);
+  root.render(<App history={router} store={store} basename={basename} />);
 };
 
 export default { mount };
