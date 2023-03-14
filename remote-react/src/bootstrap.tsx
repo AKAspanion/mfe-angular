@@ -24,10 +24,10 @@ const mount = (
     ? createBrowserRouter(routes)
     : createMemoryRouter(routes, { basename });
 
-  const newState = merge(structuredClone(state), { app: { inContainer } });
+  console.log('React state', state);
+  const newState = merge(state, { app: { inContainer } });
 
-  console.log(state);
-  console.log(newState);
+  console.log('React state', newState);
 
   const storeProp = store ?? createStore(newState);
 

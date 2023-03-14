@@ -7,5 +7,5 @@ export const selectVueAppName = createSelector(selectFeature, state => {
 });
 
 export const selectVueState = createSelector(selectFeature, state => {
-  return state?.vue ?? {};
+  return state?.vue ? { ...state?.vue } : {};
 });

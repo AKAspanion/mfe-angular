@@ -7,5 +7,5 @@ export const selectReactAppName = createSelector(selectFeature, state => {
 });
 
 export const selectReactAppState = createSelector(selectFeature, state => {
-  return state?.react ?? {};
+  return state?.react ? { ...state?.react } : {};
 });
