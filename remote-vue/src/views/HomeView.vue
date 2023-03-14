@@ -4,7 +4,7 @@
   </p>
   <p v-if="isInContainer">You can visit the standalone deployed Vue App here: </p>
   <a v-if="isInContainer" class="vu-underline vu-text-primary hover:vu-text-gray-500"
-    href="https://remote-vue.netlify.app/" target="_blank">Standalone React</a>
+    href="https://remote-vue.netlify.app/" target="_blank">Standalone Vue</a>
 
   <div className="vu-py-4">
     <h3 className="vu-text-lg vu-font-medium">Data sharing</h3>

@@ -12,6 +12,8 @@ function HomePage() {
     d(setAppName(input));
   };
 
+  console.log({ is });
+
   return (
     <div>
       <p>This is the home page of react application.</p>
