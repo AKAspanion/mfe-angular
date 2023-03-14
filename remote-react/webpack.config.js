@@ -9,7 +9,7 @@ const deps = require('./package.json').dependencies;
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
   return {
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     output: {
       filename: '[name].[contenthash].js',
       publicPath: 'auto',
