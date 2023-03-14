@@ -13,7 +13,7 @@ export type ReduxAction = {
 };
 
 export type AppState = {
-  appName: string;
+  appName?: string;
   inContainer?: boolean;
 };
 

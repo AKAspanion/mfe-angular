@@ -1,8 +1,6 @@
 import { ReduxAction, AppState, StoreShape } from '../../@types/shared-store';
 
-const initialState: AppState = {
-  appName: 'remoteApp',
-};
+const initialState: AppState = {};
 
 const CHANGE_HOME_APP_NAME = 'CHANGE_HOME_APP_NAME';
 
