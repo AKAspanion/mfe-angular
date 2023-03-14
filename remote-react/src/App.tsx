@@ -1,6 +1,6 @@
 // App.tsx
-import React, { useCallback, useEffect, useState } from 'react';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ReactStore } from '../@types/shared-store';

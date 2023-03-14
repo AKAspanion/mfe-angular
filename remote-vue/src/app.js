@@ -4,9 +4,11 @@ import App from './App.vue';
 import createStore from './store';
 
 const app = (state = {}, inContainer) => {
-  const newState = merge(state, { inContainer });
+  const newState = merge(structuredClone(state), { inContainer });
+
   console.log(state);
   console.log(newState);
+
   const store = createStore(newState);
 
   return createApp(App).use(store);
