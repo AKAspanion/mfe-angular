@@ -5,8 +5,8 @@ const initialState: AppState = {
   standalone: false,
 };
 
-const CHANGE_HOME_APP_NAME = 'CHANGE_HOME_APP_NAME';
-const CHANGE_STANDALONE = 'CHANGE_STANDALONE';
+const SET_APP_NAME = 'SET_APP_NAME';
+const SET_APP_STATE = 'SET_APP_STATE';
 
 // selectors
 export const selectAppName = (state: StoreShape) => {
@@ -14,32 +14,30 @@ export const selectAppName = (state: StoreShape) => {
 };
 
 export const selectIsStandalone = (state: StoreShape) => {
+  console.log('selector', { state });
   return state?.app?.standalone;
 };
 
 // actions
 export const setAppName = (appName: string) => {
-  return { type: CHANGE_HOME_APP_NAME, payload: appName };
+  return { type: SET_APP_NAME, payload: appName };
 };
 
-export const setIsStandalone = (standalone?: boolean) => {
-  return { type: CHANGE_STANDALONE, payload: standalone };
+export const setAppState = (appState?: AppState) => {
+  return { type: SET_APP_STATE, payload: appState };
 };
 
 // reducer
 const appReducer = (state = initialState, action: ReduxAction) => {
   switch (action.type) {
-    case CHANGE_HOME_APP_NAME: {
+    case SET_APP_NAME: {
       return {
         ...state,
         appName: action.payload,
       };
     }
-    case CHANGE_STANDALONE: {
-      return {
-        ...state,
-        standalone: action.payload,
-      };
+    case SET_APP_STATE: {
+      return { ...state, ...(action.payload || {}) };
     }
   }
   return state;

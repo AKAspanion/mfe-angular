@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ReactStore } from '../@types/shared-store';
-import { setIsStandalone } from './store/app';
+import { AppState, ReactStore } from '../@types/shared-store';
+import { setAppState } from './store/app';
 
 import './App.css';
 
 export declare type AppProps = {
   store: ReactStore;
   basename?: string;
-  standalone?: boolean;
+  newState?: AppState;
   history: ReturnType<typeof createBrowserRouter>;
   children?: React.ReactNode;
 };
@@ -56,10 +56,10 @@ const AppWithRoute: React.FC<AppProps> = props => {
 
 const AppWithInit: React.FC<AppProps> = props => {
   const d = useDispatch();
-  const { standalone, children } = props;
+  const { newState, children } = props;
 
   useEffect(() => {
-    d(setIsStandalone(standalone));
+    d(setAppState(newState || {}));
   }, []);
 
   return <React.Fragment>{children}</React.Fragment>;

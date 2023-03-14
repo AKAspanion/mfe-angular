@@ -33,7 +33,7 @@ const mount = (
       store={store}
       history={router}
       basename={basename}
-      standalone={standalone}
+      newState={newState?.app}
     />
   );
 };
