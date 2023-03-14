@@ -18,16 +18,27 @@ type ReactMount = {
 
 const mount = (
   mountPoint: HTMLElement,
-  { state = {}, store, inContainer, history, basename = '/' }: ReactMount = {}
+  {
+    state = {},
+    store,
+    history,
+    basename = '/',
+    inContainer = false,
+  }: ReactMount = {}
 ) => {
   const router = history
     ? createBrowserRouter(routes)
     : createMemoryRouter(routes, { basename });
 
-  console.log('React state', state);
-  const newState = merge(structuredClone(state), { app: { inContainer } });
+  console.log('React prop state', state);
+  const newState = merge(structuredClone(state), {
+    app: { inContainer },
+    inContainer,
+  });
 
   console.log('React state', newState);
+  newState.app.inContainer = inContainer;
+  newState.inContainer = inContainer;
 
   const storeProp = store ?? createStore(newState);
 

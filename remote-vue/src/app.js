@@ -4,7 +4,7 @@ import App from './App.vue';
 import createStore from './store';
 
 const app = (state = {}, inContainer) => {
-  console.log('Vue state', state);
+  console.log('Vue prop state', state);
   const newState = merge(structuredClone(state), { inContainer });
 
   console.log('Vue state', newState);
