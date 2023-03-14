@@ -1,7 +1,7 @@
 <template>
     <div class="vu-bg-base-200 vu-rounded-xl vu-flex">
         <div class="vu-w-56 vu-flex vu-pt-6 vu-flex-col vu-gap-2 vu-bg-gray-100 vu-p-4 vu-h-screen">
-            <div className="vu-px-2 vu-text-2xl vu-font-bold">Vue</div>
+            <router-link class="vu-px-2 vu-text-2xl vu-font-bold" to="/">Vue</router-link>
             <div class="vu-group">
 
                 <router-link

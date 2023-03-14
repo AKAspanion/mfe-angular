@@ -5,7 +5,9 @@ function Home() {
   return (
     <div className="re-bg-base-200 re-rounde-xl re-flex">
       <div className="re-w-56 re-flex re-pt-6 re-flex-col re-gap-2 re-bg-gray-100 re-p-4 re-h-screen">
-        <div className="re-px-2 re-text-2xl re-font-bold">React</div>
+        <Link className="re-px-2 re-text-2xl re-font-bold" to={'/'}>
+          React
+        </Link>
         <div className="re-group">
           <Link
             className="hover:re-bg-primary re-flex re-items-center re-p-2 re-text-base re-font-normal re-text-gray-900 re-rounded-lg dark:re-text-white"
