@@ -3,9 +3,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import createStore from './store';
 
-const app = (state = {}, inContainer) => {
+const app = (state = {}, standalone) => {
   console.log('Vue prop state', state);
-  const newState = merge(structuredClone(state), { inContainer });
+  const newState = merge(structuredClone(state), { standalone });
 
   console.log('Vue state', newState);
 

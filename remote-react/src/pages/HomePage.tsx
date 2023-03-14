@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAppName, selectInContainer, setAppName } from '../store/app';
+import { selectAppName, selectIsStandalone, setAppName } from '../store/app';
 
 function HomePage() {
   const [input, setInput] = useState('');
   const d = useDispatch();
-  const is = useSelector(selectInContainer);
+  const isStandalone = useSelector(selectIsStandalone);
   const appName = useSelector(selectAppName);
 
   const handleUpdate = () => {
     d(setAppName(input));
   };
 
-  console.log({ is });
+  console.log({ isStandalone });
 
   return (
     <div>
       <p>This is the home page of react application.</p>
-      {is && (
+      {!isStandalone && (
         <>
           <p>You can visit the standalone deployed React App here: </p>
           <a

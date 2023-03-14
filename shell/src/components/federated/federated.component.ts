@@ -65,14 +65,14 @@ export class FederatedComponent implements OnInit {
             entity.mount(domElement, {
               state: parsedState,
               history: false,
-              inContainer: true,
+              isStandalone: false,
               basename: this.basePathName,
             });
           });
         } else {
           entity.mount(domElement, {
             history: false,
-            inContainer: true,
+            isStandalone: false,
             basename: this.basePathName,
           });
         }

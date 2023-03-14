@@ -6,7 +6,6 @@ import { useAppStore } from './app';
 const state = useAppStore(store);
 
 const createStore = defaultState => {
-  //   state.$state = { appName: 'VueApp', inContainer };
   state.$state = { ...defaultState };
 
   state.$subscribe((_, state) => {

@@ -11,8 +11,8 @@ export const selectAppName = (state: StoreShape) => {
   return state?.app?.appName || '-';
 };
 
-export const selectInContainer = (state: StoreShape) => {
-  return state?.app?.inContainer;
+export const selectIsStandalone = (state: StoreShape) => {
+  return state?.app?.standalone;
 };
 
 // actions

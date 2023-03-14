@@ -2,9 +2,9 @@
   <p>
     This is the home page of vue application.
   </p>
-  <p v-if="isInContainer">You can visit the standalone deployed Vue App here: </p>
-  <a v-if="isInContainer" class="vu-underline vu-text-primary hover:vu-text-gray-500"
-    href="https://remote-vue.netlify.app/" target="_blank">Standalone Vue</a>
+  <p v-if="!standalone">You can visit the standalone deployed Vue App here: </p>
+  <a v-if="!standalone" class="vu-underline vu-text-primary hover:vu-text-gray-500" href="https://remote-vue.netlify.app/"
+    target="_blank">Standalone Vue</a>
 
   <div className="vu-py-4">
     <h3 className="vu-text-lg vu-font-medium">Data sharing</h3>
@@ -39,8 +39,8 @@ export default defineComponent({
     return { appStore }
   },
   computed: {
-    isInContainer() {
-      return this.appStore.isInContainer;
+    standalone() {
+      return this.appStore.isStandalone;
     },
     appName() {
       return this.appStore.appName || "-";

@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 
 export const useAppStore = defineStore('app', {
-  state: () => ({ appName: '', inContainer: false }),
+  state: () => ({ appName: '', standalone: false }),
   getters: {
-    isInContainer: state => state.inContainer,
+    isStandalone: state => state.standalone,
     getAppName: state => state.appName,
   },
   actions: {

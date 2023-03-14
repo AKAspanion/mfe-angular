@@ -11,7 +11,7 @@ import reducers from './store/reducer';
 type ReactMount = {
   state?: any;
   basename?: string;
-  inContainer?: boolean;
+  standalone?: boolean;
   store?: ReactStore;
   history?: boolean;
 };
@@ -23,7 +23,7 @@ const mount = (
     store,
     history,
     basename = '/',
-    inContainer = false,
+    standalone = false,
   }: ReactMount = {}
 ) => {
   const router = history
@@ -32,13 +32,13 @@ const mount = (
 
   console.log('React prop state', state);
   const newState = merge(structuredClone(state), {
-    app: { inContainer },
-    inContainer,
+    app: { standalone },
+    standalone,
   });
 
   console.log('React state', newState);
-  newState.app.inContainer = inContainer;
-  newState.inContainer = inContainer;
+  newState.app.standalone = standalone;
+  newState.standalone = standalone;
 
   const storeProp = store ?? createStore(newState);
 

@@ -14,7 +14,7 @@ export type ReduxAction = {
 
 export type AppState = {
   appName?: string;
-  inContainer?: boolean;
+  standalone?: boolean;
 };
 
 export type ReducerMap = {
