@@ -56,7 +56,7 @@ const configureStore = (defaultState: StoreShape) => {
   return store;
 };
 
-const createStore = async (defaultState: StoreShape) => {
+const createStore = (defaultState: StoreShape) => {
   const store = configureStore(defaultState);
   console.log('defaultState', defaultState);
 
@@ -68,8 +68,6 @@ const createStore = async (defaultState: StoreShape) => {
       new CustomEvent('[remote-react] state sync', { detail: state })
     );
   });
-
-  await sleep(200);
 
   return store;
 };

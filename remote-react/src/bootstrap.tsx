@@ -2,11 +2,9 @@ import React from 'react';
 import merge from 'lodash.merge';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { ReactStore } from '../@types/shared-store';
 import { createBrowserRouter, createMemoryRouter } from 'react-router-dom';
 import routes from './routes/routes';
 import createStore from './store';
-import reducers from './store/reducer';
 
 type ReactMount = {
   state?: any;
@@ -28,13 +26,11 @@ const mount = (
 
   console.log('React state', newState);
 
-  (async () => {
-    const store = await createStore(newState);
+  const store = createStore(newState);
 
-    createRoot(mountPoint).render(
-      <App history={router} store={store} basename={basename} />
-    );
-  })();
+  createRoot(mountPoint).render(
+    <App history={router} store={store} basename={basename} />
+  );
 };
 
 export default { mount };
