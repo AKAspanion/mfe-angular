@@ -12,6 +12,7 @@ import {
   ReduxAction,
   StoreShape,
 } from 'remote-react/@types/shared-store';
+import reducers from './reducer';
 
 const middleware = [thunk];
 
@@ -57,6 +58,8 @@ const configureStore = (defaultState: StoreShape) => {
 const createStore = (defaultState: StoreShape) => {
   const store = configureStore(defaultState);
   console.log('defaultState', defaultState);
+
+  store.registerReducer({ ...reducers });
 
   store.subscribe(() => {
     const state = store.getState();

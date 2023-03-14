@@ -30,11 +30,9 @@ const mount = (
 
   const store = createStore(newState);
 
-  store.registerReducer({ ...reducers });
-
-  const root = createRoot(mountPoint);
-
-  root.render(<App history={router} store={store} basename={basename} />);
+  createRoot(mountPoint).render(
+    <App history={router} store={store} basename={basename} />
+  );
 };
 
 export default { mount };
