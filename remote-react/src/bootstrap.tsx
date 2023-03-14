@@ -28,11 +28,13 @@ const mount = (
 
   console.log('React state', newState);
 
-  const store = createStore(newState);
+  (async () => {
+    const store = await createStore(newState);
 
-  createRoot(mountPoint).render(
-    <App history={router} store={store} basename={basename} />
-  );
+    createRoot(mountPoint).render(
+      <App history={router} store={store} basename={basename} />
+    );
+  })();
 };
 
 export default { mount };
