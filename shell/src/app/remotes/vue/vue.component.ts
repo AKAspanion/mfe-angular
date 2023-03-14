@@ -2,6 +2,9 @@ import { Component, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { vueAppRouteBasePath } from 'shell/src/constants/microfrontends';
 import { environment } from 'shell/src/environments/environment';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectVueState } from '../../store/vue.selectors';
 
 @Component({
   selector: 'app-vue',
@@ -11,7 +14,15 @@ import { environment } from 'shell/src/environments/environment';
 export class VueRemote implements OnDestroy {
   public remoteEntry: string = `${environment.vueMFEHost}remoteEntry.js`;
   public vueAppBasename: string = vueAppRouteBasePath;
-  constructor(private _location: Location) {}
+  vueState$: Observable<any>;
+
+  constructor(
+    private _location: Location,
+    private store: Store<{ react: any }>
+  ) {
+    this.vueState$ = store.select(selectVueState);
+  }
+
   private navigationHandler = (event: any) => {
     const newPathname = event.detail;
 

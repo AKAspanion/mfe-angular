@@ -11,6 +11,7 @@
     "openssl": "NODE_OPTIONS=--openssl-legacy-provider"
   },
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.7",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.14",
@@ -30,6 +31,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "lodash.merge": "^4.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",

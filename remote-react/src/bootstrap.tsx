@@ -1,4 +1,5 @@
 import React from 'react';
+import merge from 'lodash.merge';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { ReactStore } from '../@types/shared-store';
@@ -8,6 +9,7 @@ import createStore from './store';
 import reducers from './store/reducer';
 
 type ReactMount = {
+  state?: any;
   basename?: string;
   inContainer?: boolean;
   store?: ReactStore;
@@ -16,14 +18,16 @@ type ReactMount = {
 
 const mount = (
   mountPoint: HTMLElement,
-  { store, inContainer, history, basename = '/' }: ReactMount = {}
+  { state = {}, store, inContainer, history, basename = '/' }: ReactMount = {}
 ) => {
   const router = history
     ? createBrowserRouter(routes)
     : createMemoryRouter(routes, { basename });
 
-  const storeProp =
-    store ?? createStore({ app: { appName: 'ReactApp', inContainer } });
+  const madeState = { app: { inContainer } };
+  const newState = merge(state, madeState);
+
+  const storeProp = store ?? createStore(newState);
 
   storeProp.registerReducer({ ...reducers });
 

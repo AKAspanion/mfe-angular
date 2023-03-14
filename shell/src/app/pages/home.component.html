@@ -7,4 +7,13 @@
   </p>
   <p>This Microfrontend uses full fledged React and Vue applications.</p>
   <br />
+
+  <div>
+    Current React App Name:
+    <span class="an-font-bold">{{ reactAppname$ | async }}</span>
+  </div>
+  <div>
+    Current Vue App Name:
+    <span class="an-font-bold">{{ vueAppname$ | async }}</span>
+  </div>
 </div>

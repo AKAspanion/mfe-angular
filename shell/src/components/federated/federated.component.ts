@@ -9,6 +9,8 @@ import {
   ViewContainerRef,
   Output,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { loadRemoteModule } from '../../utils/federation-utils';
 
 @Component({
@@ -23,6 +25,7 @@ export class FederatedComponent implements OnInit {
   @Input() componentName = 'default';
   @Input() isApp: boolean;
   @Input() basePathName: string;
+  @Input() state: Observable<any>;
   @Input() webComponentSelector: string;
   @Output() onRemoteMount: EventEmitter<string> = new EventEmitter<string>();
   private viewContainerRef = inject(ViewContainerRef);
@@ -57,11 +60,22 @@ export class FederatedComponent implements OnInit {
       const entity = federated[this.componentName];
 
       if (this.isApp) {
-        entity.mount(domElement, {
-          history: false,
-          inContainer: true,
-          basename: this.basePathName,
-        });
+        if (this.state.pipe) {
+          this.state.pipe(take(1)).subscribe(parsedState => {
+            entity.mount(domElement, {
+              state: parsedState,
+              history: false,
+              inContainer: true,
+              basename: this.basePathName,
+            });
+          });
+        } else {
+          entity.mount(domElement, {
+            history: false,
+            inContainer: true,
+            basename: this.basePathName,
+          });
+        }
       } else {
         const selector = this.webComponentSelector;
         if (!customElements.get(selector)) {

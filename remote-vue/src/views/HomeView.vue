@@ -20,6 +20,9 @@
         Update
       </button>
     </div>
+    <div>
+      Current App name: <span class="vu-font-bold">{{ appName }}</span>
+    </div>
   </div>
 </template>
 
@@ -38,6 +41,9 @@ export default defineComponent({
   computed: {
     isInContainer() {
       return this.appStore.isInContainer;
+    },
+    appName() {
+      return this.appStore.appName || "-";
     },
   },
   methods: {

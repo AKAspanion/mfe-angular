@@ -17,6 +17,9 @@ import { RouteEventsService } from './route-events.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { RoleGuardService } from './auth/role-guard.service';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { reactReducer } from './store/react.reducer';
+import { vueReducer } from './store/vue.reducer';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -42,6 +45,7 @@ export function initializeApp(
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES),
+    StoreModule.forRoot({ react: reactReducer, vue: vueReducer }),
   ],
   providers: [
     AuthGuardService,

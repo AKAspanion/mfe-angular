@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import { selectInContainer, setAppName } from '../store/app';
+import { selectAppName, selectInContainer, setAppName } from '../store/app';
 
 function HomePage() {
   const [input, setInput] = useState('');
   const d = useDispatch();
   const is = useSelector(selectInContainer);
+  const appName = useSelector(selectAppName);
 
   const handleUpdate = () => {
     d(setAppName(input));
@@ -36,16 +35,24 @@ function HomePage() {
         </p>
         <p>Navigate to Angular app home page to see the updated name.</p>
         <div className="re-py-2">
-          <Input
+          <input
             value={input}
+            type="text"
             placeholder="Enter new app name"
+            className="re-bg-gray-50 re-border re-border-gray-300 re-text-gray-900 re-text-sm re-rounded-lg focus:re-ring-primary focus:re-border-primary re-outline-none focus:re-outline-none re-block re-w-full re-p-2.5"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInput(e.target.value)
             }
           />
           <div className="re-p-1" />
-          <Button label="Update" onClick={handleUpdate} />
+          <button
+            type="button"
+            onClick={handleUpdate}
+            className="re-text-black re-bg-primary hover:re-bg-primary-focus re-font-medium re-rounded-lg re-text-sm re-px-5 re-py-2 focus:re-outline-none">
+            Update
+          </button>
         </div>
+        Current App name: <span className="re-font-bold">{appName}</span>
       </div>
     </div>
   );

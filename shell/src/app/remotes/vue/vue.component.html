@@ -3,6 +3,7 @@
     remoteName="vue_remote"
     exposedModule="./Bootstrap"
     [isApp]="true"
+    [state]="vueState$"
     [remoteEntry]="remoteEntry"
     [basePathName]="vueAppBasename"
     (onRemoteMount)="onMount($event)"></federated-component>
