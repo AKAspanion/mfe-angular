@@ -25,7 +25,7 @@ const mount = (
     : createMemoryRouter(routes, { basename });
 
   console.log('React state', state);
-  const newState = merge(state, { app: { inContainer } });
+  const newState = merge(structuredClone(state), { app: { inContainer } });
 
   console.log('React state', newState);
 
