@@ -29,7 +29,12 @@ const mount = (
   const store = createStore(newState);
 
   createRoot(mountPoint).render(
-    <App history={router} store={store} basename={basename} />
+    <App
+      store={store}
+      history={router}
+      basename={basename}
+      standalone={standalone}
+    />
   );
 };
 

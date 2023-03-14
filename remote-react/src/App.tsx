@@ -1,15 +1,16 @@
 // App.tsx
 import React, { useEffect } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 import { ReactStore } from '../@types/shared-store';
+import { setIsStandalone } from './store/app';
 
 import './App.css';
 
 export declare type AppProps = {
-  basename?: string;
   store: ReactStore;
+  basename?: string;
+  standalone?: boolean;
   history: ReturnType<typeof createBrowserRouter>;
   children?: React.ReactNode;
 };
@@ -46,9 +47,22 @@ const AppWithRoute: React.FC<AppProps> = props => {
 
   return (
     <AppWithStore {...props}>
-      <RouterProvider router={history} />
+      <AppWithInit {...props}>
+        <RouterProvider router={history} />
+      </AppWithInit>
     </AppWithStore>
   );
+};
+
+const AppWithInit: React.FC<AppProps> = props => {
+  const d = useDispatch();
+  const { standalone, children } = props;
+
+  useEffect(() => {
+    d(setIsStandalone(standalone));
+  }, []);
+
+  return <React.Fragment>{children}</React.Fragment>;
 };
 
 const AppWithStore: React.FC<AppProps> = props => {
