@@ -12,7 +12,7 @@ export const selectAppName = (state: StoreShape) => {
 };
 
 export const selectInContainer = (state: StoreShape) => {
-  return state?.app?.inContainer || false;
+  return state?.app?.inContainer ?? false;
 };
 
 // actions
