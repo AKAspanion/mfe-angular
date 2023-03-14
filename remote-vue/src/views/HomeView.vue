@@ -7,10 +7,10 @@
     target="_blank">Standalone Vue</a>
 
   <div className="vu-py-4">
-    <h3 className="vu-text-lg vu-font-medium">Data sharing</h3>
-    <p>Update the app name using the given input below.</p>
-    <p>This data is shared among all other MFE's that are subscribed to state change.</p>
-    <p>Navigate to Angular app home page to see the updated name.</p>
+    <h3 v-if="!standalone" className="vu-text-lg vu-font-medium">Data sharing</h3>
+    <p>Update the app name in Vue Store.</p>
+    <p v-if="!standalone">This data is shared with Angular shell, since it is subscribed to this app's state change.</p>
+    <p v-if="!standalone">Navigate to Angular app home page to see the updated name.</p>
     <div className="vu-py-2">
       <input type="text" :value="textInput" placeholder="Enter new app name" @input="textInput = $event.target.value"
         className="vu-bg-gray-50 vu-border vu-border-gray-300 vu-text-gray-900 vu-text-sm vu-rounded-lg focus:vu-ring-primary focus:vu-border-primary vu-outline-none focus:vu-outline-none vu-block vu-w-full vu-p-2.5" />

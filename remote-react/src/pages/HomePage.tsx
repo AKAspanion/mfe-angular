@@ -21,13 +21,19 @@ function HomePage() {
         </>
       )}
       <div className="re-py-4">
-        <h3 className="re-text-lg re-font-medium">Data sharing</h3>
-        <p>Update the app name using the given input below.</p>
-        <p>
-          This data is shared among all other MFE's that are subscribed to state
-          change.
-        </p>
-        <p>Navigate to Angular app home page to see the updated name.</p>
+        {!isStandalone && (
+          <h3 className="re-text-lg re-font-medium">Data sharing</h3>
+        )}
+        <p>Update the app name in Redux.</p>
+        {!isStandalone && (
+          <>
+            <p>
+              This data is shared with Angular shell, since it is subscribed to
+              to this app's state change.
+            </p>
+            <p>Navigate to Angular app home page to see the updated name.</p>
+          </>
+        )}
         <div className="re-py-2">
           <UpdateName />
         </div>
