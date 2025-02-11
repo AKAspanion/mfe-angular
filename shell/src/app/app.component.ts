@@ -33,9 +33,8 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationStart) {
         startUrl = event.url;
       }
-      if (event instanceof NavigationEnd) {
-        this.handleNavigation(event.url);
-      }
+
+      this.handleNavigation(event.url);
     });
   }
   toggleSidebar() {
@@ -60,10 +59,9 @@ export class AppComponent implements OnInit {
       }
     } else if (url.startsWith(this.vueAppBasename)) {
       if (url !== this._location.path()) {
+        const detail = url.replace(this.vueAppBasename, '') || '/';
         window.dispatchEvent(
-          new CustomEvent('[shell-vue] navigated', {
-            detail: url.replace(this.vueAppBasename, ''),
-          })
+          new CustomEvent('[shell-vue] navigated', { detail })
         );
       } else if (url === this.vueAppBasename) {
         window.dispatchEvent(
